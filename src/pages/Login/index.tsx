@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
 import img_pc from "../../assets/image_pc.png";
+import icon_user from "../../assets/icon-user.svg";
+import icon_password from "../../assets/icon-password.svg";
+
+
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { useAuth } from "../../context/AuthProvider/useAuth";
+import { url } from "inspector";
 
 export function Login() {
     const Box = styled.div`
@@ -67,6 +73,7 @@ export function Login() {
 
     }
 
+    const [isClicked, setIsClicked] = useState(true);
     
     return (
         <Box>
@@ -74,7 +81,7 @@ export function Login() {
                     <h1 style={{fontSize: "60px"}}>Olá,</h1>
                     <p style={{fontSize: "16px", width: "301px", marginTop: "-10px"}}>Para continuar navegando de forma segura, efetue o login na rede.</p>
                     <h4 style={{fontSize: "30px", marginTop: "135px"}}>Login</h4>
-                    <Input placeholder= "Usuário" type="" invalid={invalid}/>
+                    <Input placeholder= "Usuário" type="name" invalid={invalid}/>
                     <Input placeholder= "Senha" type="password" invalid={invalid}/>
                     <div style={{display:invalid ? "none": "vidible", textAlign: "center", marginLeft: "50px"}}><Paragraph>Ops, um usuário ou senha inválidos. Tente novamente!</Paragraph></div>
                     <Button>Continuar</Button>

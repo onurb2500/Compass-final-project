@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Span = styled.span` 
@@ -15,11 +16,20 @@ const Seconds = styled.span`
 `
 
 export function Clock (any: any) {
-    const [seconds, setSeconds] = useState(160)
+    const [seconds, setSeconds] = useState(60)
+
+    const navigate = useNavigate()
+
+    function goLogin () {
+        navigate("/login")
+    }
 
     useEffect(() => {
         setTimeout(() => {
             setSeconds(seconds - 1) 
+            if (seconds===0) {
+                goLogin();
+            }
         }, 1000);
     }, [seconds])
 
