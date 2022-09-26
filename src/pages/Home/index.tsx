@@ -9,6 +9,7 @@ const Box = styled.div`
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+    max-height: 1080px;
 `;
 
 const Header = styled.div`
@@ -44,23 +45,49 @@ const Temperture = styled.div`
     align-items: center;
     justify-content: center;
     margin-right: 30px;
-`
+`;
 
 const Content = styled.div`
     width: 100%;
     display: flex;
-
-`
+`;
 
 const ContentImage = styled.div`
     background-image: url(${bola_compasso});
     background-repeat: no-repeat;
-    width:100vw;
+    width:60vw;
     height:70vh;
     margin-top: 63px;
-`
+`;
 const Text = styled.div`
-    width: 55%;
+    margin-top: 150px;
+    margin-right: 6%;
+    width: 100%;
+    text-align: right;
+`;
+
+const Tef = styled.p`
+    font-weight: 700;
+    font-size: 36px;
+    color: #C12D18;
+`;
+
+const Te = styled.p`
+    color: #C12D18;
+    font-weight: 700;
+    font-size: 64px;
+`;
+
+const Tp = styled.p`
+    font-weight: 400;
+    font-size: 24px;
+    color: #222222;
+`
+const Footer = styled.div`
+    width: 100%;
+    height: 110px;
+    background: linear-gradient(90.16deg, #33383D 0%, #1C1D20 100%);
+    border-color: #33383D;
 `
 
 export function Home () {
@@ -90,6 +117,9 @@ export function Home () {
                     <Tp>que permitem o crescimento dos nossos clientes</Tp>
                 </Text>
             </Content>
+            <Footer>
+
+            </Footer>
         </Box>
     );
 }
