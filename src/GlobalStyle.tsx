@@ -8,5 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     text-decoration: none;
     font-family: 'Mark Pro';
+    font-weight: 400;
+    color: #E0E0E0;
 }
 `
