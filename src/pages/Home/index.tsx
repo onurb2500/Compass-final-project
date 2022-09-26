@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import logo_header from "../../assets/LogoCompasso.svg"
 import bola_compasso from "../../assets/bola-LogoCompasso.png"
+import { Clock } from "../../components/Clock";
 
 
 const Box = styled.div`
@@ -88,6 +89,17 @@ const Footer = styled.div`
     height: 110px;
     background: linear-gradient(90.16deg, #33383D 0%, #1C1D20 100%);
     border-color: #33383D;
+    display: flex;
+`
+
+const SpanFooter = styled.span`
+    width: 541px;
+    font-weight: 400;
+    font-size: 12px;
+    border-right: 1px solid #FFFFFF;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align:right;
 `
 
 export function Home () {
@@ -118,7 +130,10 @@ export function Home () {
                 </Text>
             </Content>
             <Footer>
-
+                <SpanFooter>Essa janela do navegador é usada para manter sua sessão de autenticação ativa. Deixe-a aberta em segundo plano e abra uma nova janela para continuar a navegar.</SpanFooter>
+                <Clock/>
+                <button></button>
+                <button></button>
             </Footer>
         </Box>
     );

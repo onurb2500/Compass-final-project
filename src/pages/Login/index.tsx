@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import img_pc from "../../assets/image_pc.png";
+import { Button } from "../../components/Button";
+import { Input } from "../../components/Input";
+import { useAuth } from "../../context/AuthProvider/useAuth";
 
 export function Login() {
     const Box = styled.div`
@@ -18,7 +22,7 @@ export function Login() {
         height: 100%;
     `;
 
-    const Infos = styled.div`
+    const Infos = styled.form`
         width: 50%;
         display: flex;
         flex-direction: column;
@@ -28,41 +32,51 @@ export function Login() {
         padding-bottom: 197px;
     `;
 
-    const Input = styled.input`
-    background: #26292C;
-    border: 1px solid #FFFFFF;
-    border-radius: 50px;
-    width: 379px;
-    height: 60px;
-    left: 285px;
-    top: 547px;
-    padding: 20px;
-    font-weight: 400;
-    font-size: 16px;
-    `;
-
-    const Button = styled.button`
-    width: 379px;
-    height: 67px;
-    left: 285px;
-    top: 815px;
-    border: none;
-    background: linear-gradient(90deg, #FF2D04 0%, #C13216 100%);
-    box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.15);
-    border-radius: 50px;
-    filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
-    font-size: 18px;
+    const Paragraph = styled.p`
+        display: flex;
+        width: 283px;
+        font-weight: 700;
+        font-size: 16px;
+        color: #E9B425;
+        justify-content: space-around;
     `
 
+    const navigate = useNavigate();
+    const [invalid, setInvalid] = useState(true)
 
+    async function onFinish(event: any) {
+        event.preventDefault();
+        
+        const value = {
+            email: event.target["0"].value,
+            password: event.target["1"].value
+        }
+        
+        const main ={
+            email: "brunosjaques@gmail.com",
+            password: "123456"
+        }
+
+        if ((value.email === main.email)&&(value.password === main.password)) {
+            navigate("/home");
+            setInvalid(true)
+        } else {
+            setInvalid(false)
+            
+        }
+
+    }
+
+    
     return (
         <Box>
-            <Infos>
+            <Infos onSubmit={(event)=>onFinish(event)}>
                     <h1 style={{fontSize: "60px"}}>Olá,</h1>
                     <p style={{fontSize: "16px", width: "301px", marginTop: "-10px"}}>Para continuar navegando de forma segura, efetue o login na rede.</p>
                     <h4 style={{fontSize: "30px", marginTop: "135px"}}>Login</h4>
-                    <Input placeholder="Usuário"/>
-                    <Input placeholder="Senha"/>
+                    <Input placeholder= "Usuário" type="" invalid={invalid}/>
+                    <Input placeholder= "Senha" type="password" invalid={invalid}/>
+                    <div style={{display:invalid ? "none": "vidible", textAlign: "center", marginLeft: "50px"}}><Paragraph>Ops, um usuário ou senha inválidos. Tente novamente!</Paragraph></div>
                     <Button>Continuar</Button>
             </Infos>
             <Imagem/>
