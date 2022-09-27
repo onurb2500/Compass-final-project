@@ -39,7 +39,7 @@ export function Clock (any: any) {
                 <Span>Application Refreash in</Span>
                 <div style={{display:"flex", flexDirection:"column", textAlign:"center"}}>
                     <Seconds>{seconds}</Seconds>
-                    <Span>seconds</Span>
+                    <Span style={{marginTop:"-10px"}}>seconds</Span>
                 </div>
             </div>
         </>

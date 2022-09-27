@@ -7,7 +7,7 @@ export function Time(any: any) {
         setInterval(() => setDateState(new Date()), 30000);
     }, []);
     return (
-        <div style={{display: "flex", flexDirection:"column", alignItems: "center"}}className="App">
+        <div style={{display: "flex", flexDirection:"column", alignItems: "center", marginTop:"25px"}}className="App">
         <p style={{fontSize:"144px", fontWeight:"700", color: "#222222", lineHeight: "144px"}}>
             {dateState.toLocaleString("pt-BR", {
             hour: "numeric",
