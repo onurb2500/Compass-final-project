@@ -4,6 +4,7 @@ import logo_header from "../../assets/LogoCompasso.svg"
 import bola_compasso from "../../assets/bola-LogoCompasso.png"
 import { Clock } from "../../components/Clock";
 import { Time } from "../../components/Time";
+import Geoloc from "../../components/Weather";
 
 
 const Box = styled.div`
@@ -129,8 +130,9 @@ export function Home () {
                     <Time/>
                 </Date>
                 <Temperture>
-                    <h4 style={{fontSize:"14px", fontWeight:"400", color: "#222222"}}>Florianópolis - SC</h4>
-                    <h2 style={{fontSize:"48px", fontWeight:"700", color: "#222222"}}>22º</h2>
+                    <Geoloc/>
+                    {/* <h4 style={{fontSize:"14px", fontWeight:"400", color: "#222222"}}>Florianópolis - SC</h4>
+                    <h2 style={{fontSize:"48px", fontWeight:"700", color: "#222222"}}>22º</h2> */}
                 </Temperture>
             </Header>
             <Content>
