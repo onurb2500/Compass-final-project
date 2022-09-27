@@ -87,7 +87,7 @@ export function Login() {
                     <Input placeholder= "Usuário" type="name" invalid={invalid}/>
                     <Input placeholder= "Senha" type="password" invalid={invalid}/>
                     {/* <div style={{display:invalid ? "none": "vidible", textAlign: "center", marginLeft: "50px"}}></div> */}
-                    {!invalid&&<Paragraph>Ops, um usuário ou senha inválidos. Tente novamente!</Paragraph>}
+                    <div style={{display:"flex", justifyContent:"space-around", width:"379px"}}>{!invalid&&<Paragraph style={{textAlign:"center"}}>Ops, um usuário ou senha inválidos. Tente novamente!</Paragraph>}</div>
                     <Button>Continuar</Button>
             </Infos>
             <Imagem/>
