@@ -33,11 +33,7 @@ export function Input ({placeholder, type, invalid}:IInput) {
     }
 
     const Icon = styled.div<IconClicked>`
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 15%;
-        transition-duration: 1s;
+        transition: 1s;
         ${(props) => props.clicked ? "transform: translate(-70px, 0)" : "transform: translate(0)"}
     `
 

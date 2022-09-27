@@ -56,7 +56,7 @@ export function Login() {
         const value = {
             email: event.target["0"].value,
             password: event.target["1"].value
-        }
+        }   
         
         const main ={
             email: "brunosjaques@gmail.com",

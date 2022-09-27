@@ -3,6 +3,7 @@ import styled from "styled-components";
 import logo_header from "../../assets/LogoCompasso.svg"
 import bola_compasso from "../../assets/bola-LogoCompasso.png"
 import { Clock } from "../../components/Clock";
+import { Time } from "../../components/Time";
 
 
 const Box = styled.div`
@@ -19,7 +20,8 @@ const Header = styled.div`
     display: flex;
     justify-content: space-between;
     justify-items: center;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 2rem;
 `;
 
 const Image = styled.div`
@@ -90,26 +92,41 @@ const Footer = styled.div`
     background: linear-gradient(90.16deg, #33383D 0%, #1C1D20 100%);
     border-color: #33383D;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 `
 
 const SpanFooter = styled.span`
     width: 541px;
     font-weight: 400;
     font-size: 12px;
-    border-right: 1px solid #FFFFFF;
     margin-top: 15px;
     margin-bottom: 15px;
-    text-align:right;
+    margin-left: 10%;
+`
+
+const Button = styled.button`
+    width: 131px;
+    height: 99px;
+    border: none;
+`
+
+const ButtonLeft = styled(Button)`
+    color: #C13216;
+`
+
+const ButtonRight = styled(Button)`
+    background: linear-gradient(90.16deg, #33383D 0%, #1C1D20 100%);
 `
 
 export function Home () {
+
     return (
         <Box>
             <Header>
                 <Image/>
                 <Date>
-                    <h4 style={{fontSize:"144px", fontWeight:"700", color: "#222222", lineHeight: "144px"}}>11:26</h4>
-                    <p style={{fontSize:"14px", fontWeight:"400", color: "#222222"}}>terça-feira, 17 de março de 2020</p>
+                    <Time/>
                 </Date>
                 <Temperture>
                     <h4 style={{fontSize:"14px", fontWeight:"400", color: "#222222"}}>Florianópolis - SC</h4>
@@ -130,10 +147,17 @@ export function Home () {
                 </Text>
             </Content>
             <Footer>
-                <SpanFooter>Essa janela do navegador é usada para manter sua sessão de autenticação ativa. Deixe-a aberta em segundo plano e abra uma nova janela para continuar a navegar.</SpanFooter>
-                <Clock/>
-                <button></button>
-                <button></button>
+                <div style={{paddingRight: "50px", textAlign: "right", marginLeft: "15%", width: "35%", height:"60px", borderRight: "1px solid white"}}>
+                    <SpanFooter>Essa janela do navegador é usada para manter sua sessão de autenticação ativa. Deixe-a aberta em segundo plano e abra uma nova janela para continuar a navegar.</SpanFooter>
+                </div>
+                <div>
+                    <Clock/>
+                </div>
+                <div style={{display:"flex"}}>
+                    <ButtonLeft>Continuar Navegando</ButtonLeft>
+                    <ButtonRight>Logout</ButtonRight>
+                </div>
+                
             </Footer>
         </Box>
     );
