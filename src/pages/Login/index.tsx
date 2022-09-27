@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import img_pc from "../../assets/image_pc.png";
+import img_pc from "../../assets/Mask-Group.png";
 import icon_user from "../../assets/icon-user.svg";
 import icon_password from "../../assets/icon-password.svg";
 
@@ -24,6 +24,8 @@ export function Login() {
 
     const Imagem = styled.div`
         background-image: url(${img_pc});
+        background-repeat: no-repeat;
+        background-size: cover;
         width: 50%;
         height: 100%;
     `;
@@ -72,6 +74,7 @@ export function Login() {
         }
 
     }
+    
 
     const [isClicked, setIsClicked] = useState(true);
     
@@ -83,7 +86,8 @@ export function Login() {
                     <h4 style={{fontSize: "30px", marginTop: "135px"}}>Login</h4>
                     <Input placeholder= "Usuário" type="name" invalid={invalid}/>
                     <Input placeholder= "Senha" type="password" invalid={invalid}/>
-                    <div style={{display:invalid ? "none": "vidible", textAlign: "center", marginLeft: "50px"}}><Paragraph>Ops, um usuário ou senha inválidos. Tente novamente!</Paragraph></div>
+                    {/* <div style={{display:invalid ? "none": "vidible", textAlign: "center", marginLeft: "50px"}}></div> */}
+                    {!invalid&&<Paragraph>Ops, um usuário ou senha inválidos. Tente novamente!</Paragraph>}
                     <Button>Continuar</Button>
             </Infos>
             <Imagem/>

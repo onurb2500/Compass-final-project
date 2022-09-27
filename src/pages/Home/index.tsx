@@ -10,9 +10,9 @@ import Geoloc from "../../components/Weather";
 const Box = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100vw;
+    justify-content: space-between;
+    width: 100%;
     height: 100vh;
-    max-height: 1080px;
 `;
 
 const Header = styled.div`
@@ -22,7 +22,6 @@ const Header = styled.div`
     justify-content: space-between;
     justify-items: center;
     align-items: flex-start;
-    padding-top: 2rem;
 `;
 
 const Image = styled.div`
@@ -31,11 +30,12 @@ const Image = styled.div`
     width: 150px;
     height:43px;
     margin-left: 30px;
+    top:25px;
+    position: relative;
 `;
 
 const Date = styled.div`
     width: 350px;
-    height: 169px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,7 +43,6 @@ const Date = styled.div`
 `
 
 const Temperture = styled.div`
-    height: 169px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,16 +51,15 @@ const Temperture = styled.div`
 `;
 
 const Content = styled.div`
-    width: 100%;
     display: flex;
 `;
 
 const ContentImage = styled.div`
     background-image: url(${bola_compasso});
     background-repeat: no-repeat;
-    width:60vw;
-    height:70vh;
-    margin-top: 63px;
+    width:60%;
+    height:650px;
+    margin-top: 5%;
 `;
 const Text = styled.div`
     margin-top: 150px;
@@ -89,7 +87,7 @@ const Tp = styled.p`
 `
 const Footer = styled.div`
     width: 100%;
-    height: 110px;
+    height: 112px;
     background: linear-gradient(90.16deg, #33383D 0%, #1C1D20 100%);
     border-color: #33383D;
     display: flex;
@@ -108,7 +106,7 @@ const SpanFooter = styled.span`
 
 const Button = styled.button`
     width: 131px;
-    height: 99px;
+    height: 112px;
     border: none;
 `
 
@@ -119,6 +117,9 @@ const ButtonLeft = styled(Button)`
 const ButtonRight = styled(Button)`
     background: linear-gradient(90.16deg, #33383D 0%, #1C1D20 100%);
 `
+function goLogin() {
+
+}
 
 export function Home () {
 
@@ -156,8 +157,8 @@ export function Home () {
                     <Clock/>
                 </div>
                 <div style={{display:"flex"}}>
-                    <ButtonLeft>Continuar Navegando</ButtonLeft>
-                    <ButtonRight>Logout</ButtonRight>
+                    <a href="https://compass.uol/en/home/" target="_blank"><ButtonLeft>Continuar Navegando</ButtonLeft></a>
+                    <a href="http://localhost:3000/login"><ButtonRight>Logout</ButtonRight></a>
                 </div>
                 
             </Footer>

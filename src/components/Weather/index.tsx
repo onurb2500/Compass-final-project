@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import icon_weather from "../../assets/006-cloudy.svg"
 
-
-    class Geoloc extends React.Component {
+class Geoloc extends React.Component {
         API_KEY = "6dd4879fa7a562c9d85fab97d4208cde";
         state = {
             lat: undefined,
@@ -19,12 +19,12 @@ import React from "react";
         };
         getWeather = async (lat:number, lon:number) => {
             const api_call = await fetch(
-                `//api.openweathermap.org/data/2.5/weather?lat=${-27.644226825052517}&lon=${-48.674035055112796}&appid="6dd4879fa7a562c9d85fab97d4208cde"&units=metric`
+                `//api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=6dd4879fa7a562c9d85fab97d4208cde&units=metric`
             );
             const data = await api_call.json();
             this.setState({
-            lat: -27.644226825052517,
-            lon: -48.674035055112796,
+            lat: lat,
+            lon: lon,
             city: data.name,
             state: data.name,
             temperatureC: Math.round(data.main.temp),
@@ -47,9 +47,26 @@ import React from "react";
           const { city, temperatureC } = this.state;
           if (city) {
             return (
-              <div>
-                <p>{city} - SC</p>
-                <h2>{temperatureC}°</h2>
+              <div style={{marginTop: "15px"}}>
+                <p style={{
+                  fontWeight: "400",
+                  fontSize: "18px",
+                  lineHeight: "18px",
+                  color: "#222222"
+                }}>{city} - SC</p>
+                <div style={{
+                  display: "flex",
+                  justifyContent:"space-between",
+                  width: "120px"
+                }}>
+                  <img src={icon_weather}></img>
+                  <h2 style={{
+                    fontWeight: "700",
+                    fontSize: "48px",
+                    lineHeight: "61px",
+                    color: "#222222"
+                  }}>{temperatureC}°</h2>
+                </div>
               </div>
             );
           } else {

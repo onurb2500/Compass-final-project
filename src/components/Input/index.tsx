@@ -12,6 +12,7 @@ interface IInput {
 export function Input ({placeholder, type, invalid}:IInput) {
 
     const [clicked, setClicked] = useState(false);
+    const [password, setPassword] = useState("");
 
     
     
@@ -33,16 +34,14 @@ export function Input ({placeholder, type, invalid}:IInput) {
     }
 
     const Icon = styled.div<IconClicked>`
-        transition: 1s;
-        ${(props) => props.clicked ? "transform: translate(-70px, 0)" : "transform: translate(0)"}
+        transition: 10s;
+        ${(props) => props.clicked ? "transform: translate(-40px, 0)" : "transform: translate(10px)"};
     `
 
     const Container = styled.div`
         display: flex;
         align-items: center;
     `
-
-
 
     return (
         <Container> 
