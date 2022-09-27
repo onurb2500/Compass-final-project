@@ -52,19 +52,26 @@ export function Login() {
     const navigate = useNavigate();
     const [invalid, setInvalid] = useState(true)
 
+    const [name, setName] = useState("")
+    const [password, setPassword] =useState("")
+    
     async function onFinish(event: any) {
         event.preventDefault();
+        
         
         const value = {
             email: event.target["0"].value,
             password: event.target["1"].value
         }   
         
+        
         const main ={
             email: "brunosjaques@gmail.com",
             password: "123456"
         }
-
+        setName(event.target["0"].value);
+        setPassword(event.target["1"].value)
+        
         if ((value.email === main.email)&&(value.password === main.password)) {
             navigate("/home");
             setInvalid(true)
