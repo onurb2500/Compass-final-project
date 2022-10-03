@@ -20,13 +20,21 @@ export function Input ({placeholder, type, invalid}:IInput) {
         background: #26292C;
         border: ${invalid ? "1px solid #FFFFFF" : "1px solid #E9B425"};
         border-radius: 50px;
-        width: 379px;
-        height: 60px;
+        width: 100%;
+        height: 67px;
         left: 285px;
         top: 547px;
         padding: 20px;
         font-weight: 400;
         font-size: 16px;
+        margin: 20px 0;
+        @media only screen and (max-width: 1100px){
+            width: 100%;
+            margin: 20px 0;
+        }
+        @media only screen and (max-width: 280px){
+            width: 90%;
+        }
     `;
 
     interface IconClicked {
@@ -41,6 +49,12 @@ export function Input ({placeholder, type, invalid}:IInput) {
     const Container = styled.div`
         display: flex;
         align-items: center;
+        width: 100%;
+        max-width: 398px; 
+        @media only screen and (max-width: 1100px){
+
+        }
+        
     `
 
     return (
