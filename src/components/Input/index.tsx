@@ -50,7 +50,7 @@ export function Input ({placeholder, type, invalid}:IInput) {
         display: flex;
         align-items: center;
         width: 100%;
-        max-width: 398px; 
+        max-width: 418px; 
         @media only screen and (max-width: 1100px){
 
         }

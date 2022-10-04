@@ -40,12 +40,13 @@ export function Login() {
         }
         @media only screen and (max-width: 1100px){
             min-height: 500px;
-            max-width: 400px;
+            max-width: 418px;
             width: 100%;
             height: 90%;
             display: flex;
             align-items: center;
-            flex-direction: column;s
+            flex-direction: column;
+            padding: 5%;
         }
     `
 
@@ -67,7 +68,7 @@ export function Login() {
         }
         @media only screen and (max-width: 1100px){
             height: 94%;
-            width: 100%;
+            width: 100 %;
             padding-left:0px;;
             align-content: center;
             padding: 0;
@@ -113,18 +114,17 @@ export function Login() {
         text-align: left;
         @media only screen and (max-width: 1100px){
             font-size: 45px;
-
         }
     `
 
     const P = styled.p`
         font-size: 16px;
         width: 301px;
-        margin-top: 5px;
+        // margin-top: 5px;
         text-align: left;
         @media only screen and (max-width: 1100px){
 
-            margin-top: 4px;
+            // margin-top: 4px;
 
         }
         @media only screen and (max-width: 280px){
@@ -138,18 +138,13 @@ export function Login() {
         display: inline;
         width: 200px;
         margin-top: 35px;
-    }
-    @media only screen and (max-width: 768px){
-        // background-image: url(${icon_compass});
-        // background-repeat: no-repeat;
-        // background-size: cover;
-        width: 150px;
+        margin-left: -10px;
     }
     `
 
     const DivInput = styled.div`
         @media only screen and (max-width: 1100px){
-        width: 85%;
+        width: 93%;
         display: flex;
         flex-direction: column;
         align-items: left;
