@@ -18,10 +18,10 @@ export function Button ({children}:{children:string}) {
     font-size: 18px; 
 
     @media only screen and (max-width: 1100px){
-        width: 80%;
+        width: 90%;
     
     @media only screen and (max-width: 280px){
-        width: 214px;
+        width: 97%;
     }
     `
     return (
