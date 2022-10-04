@@ -140,7 +140,7 @@ const Footer = styled.div`
     justify-content: space-between;
     @media only screen and (max-width: 1100px){
         flex-direction: column;
-        padding: 0 20px 20px 20px;
+        // padding: 0 20px 20px 20px;
     }
 `
 const DivSpanFooter = styled.div`
@@ -184,13 +184,17 @@ const Button = styled.button`
 `
 
 const ButtonLeft = styled(Button)`
+    width: 100%;
     color: #C13216;
 `
 
 const ButtonRight = styled(Button)`
+    width: 100%;
     background: linear-gradient(90.16deg, #33383D 0%, #1C1D20 100%);
 `
-
+const A = styled.a`
+    width: 100%;
+`
 function goLogin() {
 
 }
@@ -230,9 +234,9 @@ export function Home () {
                 <div style={{margin: "20px"}}>
                     <Clock/>
                 </div>
-                <div style={{display:"flex"}}>
-                    <a href="https://compass.uol/en/home/" target="_blank"><ButtonLeft>Continuar Navegando</ButtonLeft></a>
-                    <a href="http://localhost:3000/login"><ButtonRight>Logout</ButtonRight></a>
+                <div style={{display:"flex", width: "100%"}}>
+                    <A href="https://compass.uol/en/home/" target="_blank"><ButtonLeft>Continuar Navegando</ButtonLeft></A>
+                    <A href="http://localhost:3000/login"><ButtonRight>Logout</ButtonRight></A>
                 </div>
                 
             </Footer>

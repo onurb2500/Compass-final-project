@@ -31,7 +31,7 @@ export function Login() {
 
     const DivForm = styled.div`
         width:50%; 
-        min-height: 1000px;
+        min-height: 896px;
         display: flex;
         align-items: center;
         @media only screen and (max-width: 1440px) and (max-height: 900px ){
@@ -58,7 +58,7 @@ export function Login() {
         justify-content: space-between;
         padding-left: 25%;
         padding-top: 199px;
-        padding-bottom: 197px;
+        padding-bottom: 150px;
         @media only screen and (max-width: 1440px) and (max-height: 900px ){
             padding-bottom: 0px; 
         }
