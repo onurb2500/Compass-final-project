@@ -16,7 +16,7 @@ const Seconds = styled.span`
 `
 
 export function Clock (any: any) {
-    const [seconds, setSeconds] = useState(60)
+    const [seconds, setSeconds] = useState(600)
 
     const navigate = useNavigate()
 

@@ -22,6 +22,10 @@ const Header = styled.div`
     justify-content: space-between;
     justify-items: center;
     align-items: flex-start;
+    @media only screen and (max-width: 1100px){
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 const Image = styled.div`
@@ -32,6 +36,10 @@ const Image = styled.div`
     margin-left: 30px;
     top:25px;
     position: relative;
+    @media only screen and (max-width: 1024px){
+        margin: 0px;
+        top: 10px;
+    }
 `;
 
 const Date = styled.div`
@@ -40,6 +48,9 @@ const Date = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content:flex-end;
+    @media only screen and (max-width: 1100px){
+        display: none;
+    }
 `
 
 const Temperture = styled.div`
@@ -48,51 +59,105 @@ const Temperture = styled.div`
     align-items: center;
     justify-content: center;
     margin-right: 30px;
+    @media only screen and (max-width: 1024px){
+        margin: 0px;
+    }
 `;
 
 const Content = styled.div`
     display: flex;
+    @media only screen and (max-width: 1100px){
+        justify-content: flex-end;
+        margin-bottom: 50px;
+    }
 `;
 
 const ContentImage = styled.div`
     background-image: url(${bola_compasso});
     background-repeat: no-repeat;
-    width:60%;
-    height:650px;
-    margin-top: 5%;
+    margin-top: 60px;
+    width:50%;
+    height:120%;
+    @media only screen and (max-width: 1550px){
+        width:60%;
+        height:126%;
+    }
+    @media only screen and (max-width: 1100px){
+        display:none;
+    }
 `;
 const Text = styled.div`
     margin-top: 150px;
     margin-right: 6%;
-    width: 100%;
+    width: 70%;
     text-align: right;
+    @media only screen and (max-width: 1024px){
+        margin-top: 20px;
+    }
 `;
 
 const Tef = styled.p`
     font-weight: 700;
     font-size: 36px;
     color: #C12D18;
+    @media only screen and (max-width: 1500px){
+        font-size: 26px; 
+    }
+    @media only screen and (max-width: 1024px){
+        font-size: 22px; 
+    }
 `;
 
 const Te = styled.p`
     color: #C12D18;
     font-weight: 700;
     font-size: 64px;
+    @media only screen and (max-width: 1500px){
+        font-size: 48px;  
+    }
+    @media only screen and (max-width: 1100px){
+        font-size: 36px;  
+    }
 `;
 
 const Tp = styled.p`
     font-weight: 400;
     font-size: 24px;
     color: #222222;
+    @media only screen and (max-width: 1500px){
+        font-size: 17px;  
+    }
+    @media only screen and (max-width: 1100px){
+        font-size: 17px;  
+    }
 `
 const Footer = styled.div`
     width: 100%;
-    height: 112px;
     background: linear-gradient(90.16deg, #33383D 0%, #1C1D20 100%);
     border-color: #33383D;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media only screen and (max-width: 1100px){
+        flex-direction: column;
+    }
+`
+const DivSpanFooter = styled.div`
+    padding-right: 50px;
+    text-align: right;
+    margin-left: 15%;
+    width: 35%;
+    height:60px;
+    border-right: 1px solid white;
+    @media only screen and (max-width: 1100px){
+        padding: 20px 0px 20px 0px;
+        text-align: center;
+        margin 0px;
+        width: 80%;
+        height: auto;
+        border-right: none;
+        border-bottom:  1px solid white;
+    }
 `
 
 const SpanFooter = styled.span`
@@ -102,6 +167,13 @@ const SpanFooter = styled.span`
     margin-top: 15px;
     margin-bottom: 15px;
     margin-left: 10%;
+    @media only screen and (max-width: 1100px){
+        padding: 20px 0px 20px 0px;
+        text-align: center;
+        margin 0px;
+        height: auto;
+        border-right: none;
+    }
 `
 
 const Button = styled.button`
@@ -117,6 +189,7 @@ const ButtonLeft = styled(Button)`
 const ButtonRight = styled(Button)`
     background: linear-gradient(90.16deg, #33383D 0%, #1C1D20 100%);
 `
+
 function goLogin() {
 
 }
@@ -150,10 +223,10 @@ export function Home () {
                 </Text>
             </Content>
             <Footer>
-                <div style={{paddingRight: "50px", textAlign: "right", marginLeft: "15%", width: "35%", height:"60px", borderRight: "1px solid white"}}>
+                <DivSpanFooter>
                     <SpanFooter>Essa janela do navegador é usada para manter sua sessão de autenticação ativa. Deixe-a aberta em segundo plano e abra uma nova janela para continuar a navegar.</SpanFooter>
-                </div>
-                <div>
+                </DivSpanFooter>
+                <div style={{margin: "20px"}}>
                     <Clock/>
                 </div>
                 <div style={{display:"flex"}}>

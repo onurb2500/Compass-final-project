@@ -27,7 +27,8 @@ export function Login() {
     `;
 
     const DivForm = styled.div`
-        width:50%; 
+        width:100%; 
+        max-width: 400px;
         display: flex;
         align-items: center;
         @media only screen and (max-width: 1100px){
@@ -35,6 +36,8 @@ export function Login() {
             height: 90%;
             display: flex;
             align-items: center;
+            flex-direction: column;
+            
         }
     `
 
@@ -49,11 +52,13 @@ export function Login() {
         padding-bottom: 197px;
         @media only screen and (max-width: 1500px){
             padding-left: 20%;
+            
         }
         @media only screen and (max-width: 1100px){
+            height: 94%;
             width: 100%;
-            padding-left:0px;
-            align-items: center;
+            padding-left:0px;;
+            align-content: center;
             padding: 0;
             justify-content: space-around;
 
@@ -104,7 +109,7 @@ export function Login() {
     const P = styled.p`
         font-size: 16px;
         width: 301px;
-        margin-top: -10px;
+        margin-top: 5px;
         text-align: left;
         @media only screen and (max-width: 1100px){
             padding-left: 8px;
@@ -116,15 +121,18 @@ export function Login() {
         }
     `
 
-    const ImagemHeader = styled.div`
-    @media only screen and (max-width: 1100px){
-        width: 100%;
+    const ImagemHeader = styled.img`
+    display: none;
+    @media only screen and (max-width: 1024px){
+        display: inline;
+        width: 200px;
         margin-top: 35px;
-        background-image: url(${icon_compass});
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 250px;
-        height: 59px; 
+    }
+    @media only screen and (max-width: 768px){
+        // background-image: url(${icon_compass});
+        // background-repeat: no-repeat;
+        // background-size: cover;
+        width: 150px;
     }
     `
 
@@ -133,7 +141,8 @@ export function Login() {
         width: 85%;
         display: flex;
         flex-direction: column;
-        align-items: center;}
+        align-items: left;
+    }
     `
 
     const navigate = useNavigate();
@@ -175,7 +184,7 @@ export function Login() {
     return (
         
         <Box>
-            <ImagemHeader></ImagemHeader>
+            <ImagemHeader src={icon_compass}></ImagemHeader>
             <DivForm>
                 <Infos onSubmit={(event)=>onFinish(event)}>
                         <div style={{height: "20%"}}>

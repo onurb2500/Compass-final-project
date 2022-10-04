@@ -19,9 +19,11 @@ export function Button ({children}:{children:string}) {
 
     @media only screen and (max-width: 1100px){
         width: 80%;
-        margin-left: -20px;
+    
+    @media only screen and (max-width: 280px){
+        width: 214px;
+    }
     `
-
     return (
         <ButtonSubmit>{children}</ButtonSubmit>
     )
