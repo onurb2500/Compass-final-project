@@ -19,6 +19,9 @@ export function Login() {
         background: linear-gradient(180deg, #33383d 0%, #1c1d20 100%);
         box-shadow: 4px 4px 70px rgba(0, 0, 0, 0.25);
         display: flex;
+        @media only screen and (max-width: 1440px) and (max-height: 900px ){
+            height: 900px;
+        }
         @media only screen and (max-width: 1100px){
             flex-direction: column;
             justify-content: space-between;
@@ -27,17 +30,22 @@ export function Login() {
     `;
 
     const DivForm = styled.div`
-        width:100%; 
-        max-width: 400px;
+        width:50%; 
+        min-height: 1000px;
         display: flex;
         align-items: center;
+        @media only screen and (max-width: 1440px) and (max-height: 900px ){
+            height: 800px;
+            min-height: 700px;
+        }
         @media only screen and (max-width: 1100px){
+            min-height: 500px;
+            max-width: 400px;
             width: 100%;
             height: 90%;
             display: flex;
             align-items: center;
-            flex-direction: column;
-            
+            flex-direction: column;s
         }
     `
 
@@ -50,6 +58,9 @@ export function Login() {
         padding-left: 25%;
         padding-top: 199px;
         padding-bottom: 197px;
+        @media only screen and (max-width: 1440px) and (max-height: 900px ){
+            padding-bottom: 0px; 
+        }
         @media only screen and (max-width: 1500px){
             padding-left: 20%;
             
@@ -102,7 +113,7 @@ export function Login() {
         text-align: left;
         @media only screen and (max-width: 1100px){
             font-size: 45px;
-            margin-left: 6px;
+
         }
     `
 
@@ -112,7 +123,7 @@ export function Login() {
         margin-top: 5px;
         text-align: left;
         @media only screen and (max-width: 1100px){
-            padding-left: 8px;
+
             margin-top: 4px;
 
         }
@@ -123,7 +134,7 @@ export function Login() {
 
     const ImagemHeader = styled.img`
     display: none;
-    @media only screen and (max-width: 1024px){
+    @media only screen and (max-width: 1100px){
         display: inline;
         width: 200px;
         margin-top: 35px;
