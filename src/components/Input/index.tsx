@@ -44,6 +44,7 @@ export function Input ({placeholder, type, invalid}:IInput) {
     const Icon = styled.div<IconClicked>`
         transition: 10s;
         ${(props) => props.clicked ? "transform: translate(-40px, 0)" : "transform: translate(10px)"};
+        background: #26292C;
     `
 
     const Container = styled.div`
@@ -66,7 +67,7 @@ export function Input ({placeholder, type, invalid}:IInput) {
                 type={type}
             />
             <Icon clicked={clicked}>
-                {type === "name" ? (<AiOutlineUser size={20}/>) : (<MdLockOutline size={20}/>)}
+                {type === "name" ? (<AiOutlineUser size={25}/>) : (<MdLockOutline size={25}/>)}
             </Icon>
         </Container>
     )

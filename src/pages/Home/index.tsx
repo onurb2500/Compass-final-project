@@ -11,8 +11,8 @@ const Box = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
-    height: 100vh;
+    // width: 100%; teste
+    // height: 100vh; teste
 `;
 
 const Header = styled.div`
@@ -36,7 +36,7 @@ const Image = styled.div`
     margin-left: 30px;
     top:25px;
     position: relative;
-    @media only screen and (max-width: 1024px){
+    @media only screen and (max-width: 1100px){
         margin: 0px;
         top: 10px;
     }
@@ -59,7 +59,7 @@ const Temperture = styled.div`
     align-items: center;
     justify-content: center;
     margin-right: 30px;
-    @media only screen and (max-width: 1024px){
+    @media only screen and (max-width: 1100px){
         margin: 0px;
     }
 `;
@@ -72,27 +72,44 @@ const Content = styled.div`
     }
 `;
 
-const ContentImage = styled.div`
-    background-image: url(${bola_compasso});
-    background-repeat: no-repeat;
-    margin-top: 60px;
-    width:50%;
-    height:120%;
-    @media only screen and (max-width: 1550px){
-        width:60%;
-        height:126%;
-    }
+// const ContentImage = styled.div`
+//     background-image: url(${bola_compasso});
+//     background-repeat: no-repeat;
+//     margin-top: 60px;
+//     width:50%;
+//     height:120%;
+//     @media only screen and (max-width: 1550px){
+//         width:60%;
+//         height:126%;
+//     }
+//     @media only screen and (max-width: 1100px){
+//         display:none;
+//     }
+// `;
+
+const ContentImage = styled.img`
+    margin-top: 110px;
+    max-width:50vw;
+    max-height:70vh;
+    // @media only screen and (max-width: 1550px){
+    //     width:60%;
+    //     height:126%;
+    // }
     @media only screen and (max-width: 1100px){
         display:none;
     }
 `;
+
 const Text = styled.div`
     margin-top: 150px;
     margin-right: 6%;
     width: 70%;
     text-align: right;
     @media only screen and (max-width: 1024px){
-        margin-top: 20px;
+        margin-top: 150px;
+    }
+    @media only screen and (max-width: 768px){
+        margin-top: 80px;
     }
 `;
 
@@ -132,6 +149,8 @@ const Tp = styled.p`
     }
 `
 const Footer = styled.div`
+    position: fixed; //fixed
+    bottom: 0px;
     width: 100%;
     background: linear-gradient(90.16deg, #33383D 0%, #1C1D20 100%);
     border-color: #33383D;
@@ -142,6 +161,16 @@ const Footer = styled.div`
         flex-direction: column;
         // padding: 0 20px 20px 20px;
     }
+    @media only screen and (max-width: 400px){
+        position: relative;
+    }
+    @media only screen and (max-width: 654px) and (max-height: 281px){
+        position: relative;
+    }
+    @media only screen and (max-height: 900px){
+        position: relative;
+    }
+    
 `
 const DivSpanFooter = styled.div`
     padding-right: 50px;
@@ -192,8 +221,18 @@ const ButtonRight = styled(Button)`
     width: 100%;
     background: linear-gradient(90.16deg, #33383D 0%, #1C1D20 100%);
 `
+const DivA = styled.div`
+    display: flex;
+    width: 250px;
+    @media only screen and (max-width: 1100px){
+        width: 100%;
+    }   
+`
 const A = styled.a`
     width: 100%;
+    @media only screen and (max-width: 1100px){
+        width: 100%;
+    }
 `
 function goLogin() {
 
@@ -215,7 +254,7 @@ export function Home () {
                 </Temperture>
             </Header>
             <Content>
-                <ContentImage/>
+                <ContentImage src={bola_compasso}/>
                 <Text>
                     <Tef>Our mission is</Tef>
                     <Tp>Nossa missão é</Tp>
@@ -234,10 +273,10 @@ export function Home () {
                 <div style={{margin: "20px"}}>
                     <Clock/>
                 </div>
-                <div style={{display:"flex", width: "100%"}}>
+                <DivA>
                     <A href="https://compass.uol/en/home/" target="_blank"><ButtonLeft>Continuar Navegando</ButtonLeft></A>
                     <A href="http://localhost:3000/login"><ButtonRight>Logout</ButtonRight></A>
-                </div>
+                </DivA>
                 
             </Footer>
         </Box>

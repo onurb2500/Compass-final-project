@@ -70,7 +70,29 @@ class Geoloc extends React.Component {
               </div>
             );
           } else {
-            return <span>Loading...</span>;
+            this.getWeather(51.5072,0.1276)
+            const { city, temperatureC } = this.state;
+            return <div style={{marginTop: "15px"}}>
+            <p style={{
+              fontWeight: "400",
+              fontSize: "18px",
+              lineHeight: "18px",
+              color: "#222222"
+            }}>{city} - LDN</p>
+            <div style={{
+              display: "flex",
+              justifyContent:"space-between",
+              width: "120px"
+            }}>
+              <img src={icon_weather}></img>
+              <h2 style={{
+                fontWeight: "700",
+                fontSize: "48px",
+                lineHeight: "61px",
+                color: "#222222"
+              }}>{temperatureC}°</h2>
+            </div>
+          </div>;
           }
         }
       }
