@@ -1,74 +1,48 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
+import { InputHTMLAttributes, useEffect, useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdLockOutline } from "react-icons/md";
+import { Container, Icon, Input } from "./styled";
 
-interface IInput {
-    placeholder: string,
-    type: string,
-    invalid: boolean,
+interface IInput extends InputHTMLAttributes<HTMLInputElement> {
+	placeholder: string;
+	type?: string;
+	invalid?: boolean;
+	name: string;
+	value: string;
+	onChange: (value: any) => void;
 }
 
-export function Input ({placeholder, type, invalid}:IInput) {
+const FormInput = ({
+	placeholder,
+	type,
+	invalid,
+	name,
+	value,
+	onChange,
+}: IInput) => {
+	
+	const [clicked, setClicked] = useState(false);
 
-    const [clicked, setClicked] = useState(false);
-    const [password, setPassword] = useState("");
+	return (
+		<Container>
+			<Input
+				placeholder={placeholder}
+				type={type}
+				name={name}
+				defaultValue={value}
+				onChange={onChange}
+				// onFocus={() => setClicked(true)}
+				// onBlur={(event) => event.target.value.length > 0 ? setClicked(true) : setClicked(false)}
+			/>
+			<Icon clicked={clicked}>
+				{type === "name" ? (
+					<AiOutlineUser size={25} />
+				) : (
+					<MdLockOutline size={25} />
+				)}
+			</Icon>
+		</Container>
+	);
+};
 
-    
-    
-    const Input = styled.input`
-        background: #26292C;
-        border: ${invalid ? "1px solid #FFFFFF" : "1px solid #E9B425"};
-        border-radius: 50px;
-        width: 100%;
-        height: 67px;
-        left: 285px;
-        top: 547px;
-        padding: 20px;
-        font-weight: 400;
-        font-size: 16px;
-        margin: 20px 0;
-        @media only screen and (max-width: 1100px){
-            width: 100%;
-            margin: 20px 0;
-        }
-        @media only screen and (max-width: 280px){
-            width: 90%;
-        }
-    `;
-
-    interface IconClicked {
-        clicked: boolean
-    }
-
-    const Icon = styled.div<IconClicked>`
-        transition: 10s;
-        ${(props) => props.clicked ? "transform: translate(-40px, 0)" : "transform: translate(10px)"};
-        background: #26292C;
-    `
-
-    const Container = styled.div`
-        display: flex;
-        align-items: center;
-        width: 100%;
-        max-width: 418px; 
-        @media only screen and (max-width: 1100px){
-
-        }
-        
-    `
-
-    return (
-        <Container> 
-            <Input
-                onFocus={() => setClicked(true)} 
-                onBlur={(event) => event.target.value.length > 0 ? setClicked(true) : setClicked(false)}
-                placeholder={placeholder}
-                type={type}
-            />
-            <Icon clicked={clicked}>
-                {type === "name" ? (<AiOutlineUser size={25}/>) : (<MdLockOutline size={25}/>)}
-            </Icon>
-        </Container>
-    )
-}
+export default FormInput;
