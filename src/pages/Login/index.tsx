@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/database";
+
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -10,11 +12,14 @@ import icon_user from "../../assets/icon-user.svg";
 import icon_compass from "../../assets/Logo-Compasso-Branco-hor.svg";
 
 import { Button } from "../../components/Button";
-import Input from "../../components/Input";
+import Input from "../../components/LoginInput";
 import { useAuth } from "../../context/AuthProvider/useAuth";
 import { url } from "inspector";
-import FormInput from "../../components/Input";
+import FormInput from "../../components/LoginInput";
+
 import { useNameContext } from "../../context/Name/NameContext";
+
+import LoginInput from "../../components/LoginInput";
 
 const Box = styled.div`
 	width: 100vw;
@@ -182,19 +187,35 @@ export function Login() {
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const {setName} = useNameContext()
+	const { setName } = useNameContext();
+	
+	const firebaseConfig = {
+		apiKey: "AIzaSyDHY8Woz1ti96rIW9a7Tat9a7gOFGDxZ4o",
+		authDomain: "projetofinalcompass-36b71.firebaseapp.com",
+		projectId: "projetofinalcompass-36b71",
+		storageBucket: "projetofinalcompass-36b71.appspot.com",
+		messagingSenderId: "182240882315",
+		appId: "1:182240882315:web:a59294af40b07308d5ee8e",
+	};
+
+	firebase.initializeApp(firebaseConfig);
 
 	async function onFinish(event: any) {
 		event.preventDefault();
 
+
 		firebase
 			.database()
-			.ref("users")
+			.ref('users')
 			.on("value", function (snapshot) {
 				snapshot.forEach(function (item) {
-					setName(item.val().name);
+					if (item.val().email === email) {
+						setName(item.val().name);
+					}
 				});
 			});
+		
+		
 
 		firebase
 			.auth()
@@ -230,15 +251,15 @@ export function Login() {
 					</div>
 					<DivInput>
 						<h4 style={{ fontSize: "30px", textAlign: "left" }}>Login</h4>
-						<FormInput
-							placeholder="Usuário"
+						<LoginInput
+							placeholder="Email"
 							type="name"
 							name="name"
 							value={email}
 							invalid={invalid}
 							onChange={({ target }) => setEmail(target.value)}
 						/>
-						<Input
+						<LoginInput
 							placeholder="Senha"
 							type="password"
 							name="password"
@@ -262,7 +283,7 @@ export function Login() {
 						)}
 					</div>
 					<Button>Continuar</Button>
-					<a href="/signup">cadastre-se</a>
+					<P>Não possui uma conta? <a href="/signup"> Cadastre-se</a></P>
 				</Infos>
 			</DivForm>
 			<Imagem>

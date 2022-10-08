@@ -1,14 +1,20 @@
+//REACT IMPORTS
 import React, { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useNameContext } from "../../context/Name/NameContext";
 
+//FIREBASE IMPORTS
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/database";
-import { useNavigate } from "react-router-dom";
+import { collection, addDoc } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
+//IMAGES
 import icon_compass from "../../assets/Logo-Compasso-Branco-hor.svg";
 
+//COMPONENTS
 import { Button } from "../../components/Button";
-import FormInput from "../../components/Input";
 import {
 	Box,
 	ImagemHeader,
@@ -19,11 +25,12 @@ import {
 	DivInput,
 	Imagem,
 	Logo,
+	Label,
 } from "./styles";
-import {useNameContext} from "../../context/Name/NameContext"
+import SignUpInput from "../../components/SingUpInput";
 
 export function SignUp() {
-	const {name, setName} = useNameContext();
+	const { name, setName } = useNameContext();
 	const [lastName, setLastName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -43,25 +50,22 @@ export function SignUp() {
 	};
 
 	firebase.initializeApp(firebaseConfig);
+	// const database = getFirestore(app);
+	// const collectionRef = collection(database, 'users')
 
 	function onSignUp(event: any) {
 		event.preventDefault();
-		console.log(email, password);
 
-		console.log(event);
+		const data = {
+			name: name,
+			lastName: lastName,
+			email: email,
+			password: password,
+		};
 
-        const data = {
-            name: name,
-            lastName: lastName, 
-            email: email,
-            password: password,
-        }
+		firebase.database().ref().child("users").push(data);
 
-        firebase.database().ref().child('users').push(data)
-
-		firebase
-			.auth()
-			.createUserWithEmailAndPassword(email, password)
+		firebase.auth().createUserWithEmailAndPassword(email, password)
 			.then(() => {
 				navigate("/login");
 				alert("Usuário cadastrado com sucesso!");
@@ -70,9 +74,7 @@ export function SignUp() {
 				console.log(error);
 			});
 	}
-	function text(event: any) {
-		console.log(name);
-	}
+
 	return (
 		<Box>
 			<ImagemHeader src={icon_compass}></ImagemHeader>
@@ -87,35 +89,46 @@ export function SignUp() {
 					</div>
 					<h4 style={{ fontSize: "30px", textAlign: "left" }}>Cadastro</h4>
 					<DivInput>
-						<FormInput
+						<Label>Qual o seu nome?</Label>
+						<SignUpInput
 							placeholder="Nome"
 							type="name"
 							name="name"
 							value={name}
 							onChange={({ target }) => setName(target.value)}
 						/>
-						<FormInput
+						<Label>Qual o seu sobrenome?</Label>
+						<SignUpInput
 							placeholder="Sobrenome"
 							type="name"
 							name="lastName"
 							value={lastName}
-							onChange={text}
+							onChange={({ target }) => setLastName(target.value)}
 						/>
-						<FormInput
+						<Label>Qual o seu email?</Label>
+						<SignUpInput
 							placeholder="Email"
 							type="text"
 							name="email"
 							value={email}
 							onChange={({ target }) => setEmail(target.value)}
 						/>
-						<FormInput
+						<Label>Crie uma senha</Label>
+						<SignUpInput
 							placeholder="Senha"
 							type="password"
 							name="password"
 							value={password}
 							onChange={({ target }) => setPassword(target.value)}
 						/>
-						<FormInput
+						<DivReqPass>
+							<Requirement>
+								<IconReq></IconReq>
+								<TextReq></TextReq>
+							</Requirement>
+						</DivReqPass>
+						<Label>Repita sua senha</Label>
+						<SignUpInput
 							placeholder="Repetir senha"
 							type="password"
 							name="passwordRepeat"

@@ -12,7 +12,7 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
 	onChange: (value: any) => void;
 }
 
-const FormInput = ({
+const LoginInput = ({
 	placeholder,
 	type,
 	invalid,
@@ -45,4 +45,4 @@ const FormInput = ({
 	);
 };
 
-export default FormInput;
+export default LoginInput;

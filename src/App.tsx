@@ -10,7 +10,7 @@ import { NameContext } from "./context/Name/NameContext";
 
 function App() {
 
-  const [name, setName] = useState<string>("")
+    const [name, setName] = useState<string>("")
 
 	return (
 		<NameContext.Provider value={{name, setName}}>

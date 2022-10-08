@@ -22,18 +22,14 @@ export const Box = styled.div`
 
 export const DivForm = styled.div`
 	width: 50%;
-	min-height: 896px;
+	height: 100%;
 	display: flex;
 	align-items: center;
 	@media only screen and (max-width: 1440px) and (max-height: 900px) {
-		height: 800px;
-		min-height: 700px;
+
 	}
 	@media only screen and (max-width: 1100px) {
-		min-height: 500px;
-		max-width: 418px;
 		width: 100%;
-		height: 90%;
 		display: flex;
 		align-items: center;
 		flex-direction: column;
@@ -42,27 +38,23 @@ export const DivForm = styled.div`
 `;
 
 export const Infos = styled.form`
-	width: 100%;
+
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	padding-left: 25%;
-	padding-top: 199px;
-	padding-bottom: 150px;
 	@media only screen and (max-width: 1440px) and (max-height: 900px) {
 		padding-bottom: 0px;
 	}
 	@media only screen and (max-width: 1500px) {
-		padding-left: 20%;
+		/* padding-left: 20%; */
 	}
 	@media only screen and (max-width: 1100px) {
 		height: 94%;
-		width: 100%;
 		padding-left: 0px;
 		align-content: center;
 		padding: 0;
-		justify-content: space-around;
+
 	}
 `;
 
@@ -111,6 +103,19 @@ export const P = styled.p`
 	width: 301px;
 	// margin-top: 5px;
 	text-align: left;
+	@media only screen and (max-width: 1100px) {
+		// margin-top: 4px;
+	}
+	@media only screen and (max-width: 280px) {
+		width: 100%;
+	}
+`;
+
+export const Label = styled.p`
+	width: 100%;
+	// margin-top: 5px;
+
+	margin-bottom: 5px;
 	@media only screen and (max-width: 1100px) {
 		// margin-top: 4px;
 	}
