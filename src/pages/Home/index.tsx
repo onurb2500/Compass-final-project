@@ -6,6 +6,8 @@ import { Clock } from "../../components/Clock";
 import { Time } from "../../components/Time";
 import Geoloc from "../../components/Weather";
 
+import {useNameContext} from "../../context/Name/NameContext"
+
 
 const Box = styled.div`
     display: flex;
@@ -182,7 +184,7 @@ const DivSpanFooter = styled.div`
     @media only screen and (max-width: 1100px){
         padding: 20px 0px 20px 0px;
         text-align: center;
-        margin 0px;
+        margin: 0px;
         width: 80%;
         height: auto;
         border-right: none;
@@ -200,7 +202,7 @@ const SpanFooter = styled.span`
     @media only screen and (max-width: 1100px){
         padding: 20px 0px 20px 0px;
         text-align: center;
-        margin 0px;
+        margin: 0px;
         height: auto;
         border-right: none;
     }
@@ -234,11 +236,10 @@ const A = styled.a`
         width: 100%;
     }
 `
-function goLogin() {
-
-}
 
 export function Home () {
+
+    const {name} = useNameContext();
 
     return (
         <Box>
@@ -267,6 +268,7 @@ export function Home () {
                 </Text>
             </Content>
             <Footer>
+                <div>Olá, {name}</div>
                 <DivSpanFooter>
                     <SpanFooter>Essa janela do navegador é usada para manter sua sessão de autenticação ativa. Deixe-a aberta em segundo plano e abra uma nova janela para continuar a navegar.</SpanFooter>
                 </DivSpanFooter>

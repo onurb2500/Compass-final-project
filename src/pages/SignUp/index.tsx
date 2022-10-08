@@ -20,10 +20,10 @@ import {
 	Imagem,
 	Logo,
 } from "./styles";
-import { textSpanEnd } from "typescript";
+import {useNameContext} from "../../context/Name/NameContext"
 
 export function SignUp() {
-	const [name, setName] = useState("");
+	const {name, setName} = useNameContext();
 	const [lastName, setLastName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -65,7 +65,6 @@ export function SignUp() {
 			.then(() => {
 				navigate("/login");
 				alert("Usuário cadastrado com sucesso!");
-				console.log("Usuário cadastrado com sucesso!", email, password);
 			})
 			.catch((error) => {
 				console.log(error);

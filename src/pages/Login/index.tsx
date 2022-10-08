@@ -14,6 +14,7 @@ import Input from "../../components/Input";
 import { useAuth } from "../../context/AuthProvider/useAuth";
 import { url } from "inspector";
 import FormInput from "../../components/Input";
+import { useNameContext } from "../../context/Name/NameContext";
 
 const Box = styled.div`
 	width: 100vw;
@@ -181,17 +182,19 @@ export function Login() {
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [name, setName] = useState("");
+	const {setName} = useNameContext()
 
 	async function onFinish(event: any) {
 		event.preventDefault();
 
-		firebase.database().ref('users').on('value', function(snapshot) {
-			snapshot.forEach(function (item) {
-				setName(item.val().name)
-				console.log(name);
-			})
-		})
+		firebase
+			.database()
+			.ref("users")
+			.on("value", function (snapshot) {
+				snapshot.forEach(function (item) {
+					setName(item.val().name);
+				});
+			});
 
 		firebase
 			.auth()
@@ -233,7 +236,7 @@ export function Login() {
 							name="name"
 							value={email}
 							invalid={invalid}
-							onChange={({target}) => setEmail(target.value)}
+							onChange={({ target }) => setEmail(target.value)}
 						/>
 						<Input
 							placeholder="Senha"
@@ -241,7 +244,7 @@ export function Login() {
 							name="password"
 							value={password}
 							invalid={invalid}
-							onChange={({target}) => setPassword(target.value)}
+							onChange={({ target }) => setPassword(target.value)}
 						/>
 					</DivInput>
 					{/* <div style={{display:invalid ? "none": "vidible", textAlign: "center", marginLeft: "50px"}}></div> */}
