@@ -28,6 +28,8 @@ import {
 	Label,
 } from "./styles";
 import SignUpInput from "../../components/SingUpInput";
+import Requirement from "../../components/Requirement";
+import { textSpanEnd } from "typescript";
 
 export function SignUp() {
 	const { name, setName } = useNameContext();
@@ -75,6 +77,55 @@ export function SignUp() {
 			});
 	}
 
+	const [letters, setLetters ] = useState(false)
+	const [upper, setUpper] = useState(false)
+	const [lower, setLower] = useState(false)
+	const [special, setSpecial] = useState(false)
+	const [number, setNumber] = useState(false)
+
+	const lettersRegex = new RegExp("^(?=.{6,})")
+	const upperRegex = new RegExp("^(?=.*[A-Z])")
+	const lowerRegex = new RegExp("^(?=.*[a-z])")
+	const specialRegex = new RegExp("^(?=.[!@#$%^&])")
+	const numberRegex = new RegExp("^(?=.*[0-9])")
+
+	
+
+	function CheckList(event:any) {
+
+		if(lettersRegex.test(event)) {
+			setLetters(true);
+		} else {
+			setLetters(false);
+		}
+
+		if(upperRegex.test(event)) {
+			setUpper(true);
+		} else {
+			setUpper(false);
+		}
+
+		if(lowerRegex.test(event)) {
+			setLower(true);
+		} else {
+			setLower(false);
+		}
+
+		if(specialRegex.test(event)) {
+			setSpecial(true);
+		} else {
+			setSpecial(false);
+		}
+
+		if(numberRegex.test(event)) {
+			setNumber(true);
+		} else {
+			setNumber(false);
+		}
+		console.log(letters, upper, lower, special, number);
+		
+	}
+
 	return (
 		<Box>
 			<ImagemHeader src={icon_compass}></ImagemHeader>
@@ -103,15 +154,14 @@ export function SignUp() {
 							type="name"
 							name="lastName"
 							value={lastName}
-							onChange={({ target }) => setLastName(target.value)}
-						/>
+							onChange={(({ target }) => setLastName(target.value))}						/>
 						<Label>Qual o seu email?</Label>
 						<SignUpInput
 							placeholder="Email"
 							type="text"
 							name="email"
 							value={email}
-							onChange={({ target }) => setEmail(target.value)}
+							onChange={(({ target }) => setEmail(target.value))}
 						/>
 						<Label>Crie uma senha</Label>
 						<SignUpInput
@@ -119,14 +169,9 @@ export function SignUp() {
 							type="password"
 							name="password"
 							value={password}
-							onChange={({ target }) => setPassword(target.value)}
+							onChange={(event) => (CheckList(event.target.value), setPassword(event.target.value))}
 						/>
-						<DivReqPass>
-							<Requirement>
-								<IconReq></IconReq>
-								<TextReq></TextReq>
-							</Requirement>
-						</DivReqPass>
+						<Requirement/>
 						<Label>Repita sua senha</Label>
 						<SignUpInput
 							placeholder="Repetir senha"

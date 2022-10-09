@@ -6,7 +6,7 @@ interface ISignUpInput extends InputHTMLAttributes<HTMLInputElement> {
     placeholder: string,
     type: string,
     value: string,
-    onChange: (value:any) => void;
+    onChange?: (value:any) => void;
 }
 
 const SignUpInput = ({placeholder, type, name, value, onChange}: ISignUpInput) => {
