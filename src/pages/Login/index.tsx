@@ -39,8 +39,9 @@ const Box = styled.div`
 
 const DivForm = styled.div`
 	width: 50%;
-	min-height: 896px;
+	min-height: 100%;
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	@media only screen and (max-width: 1440px) and (max-height: 900px) {
 		height: 800px;
@@ -59,27 +60,13 @@ const DivForm = styled.div`
 `;
 
 const Infos = styled.form`
-	width: 100%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	padding-left: 25%;
-	padding-top: 199px;
-	padding-bottom: 150px;
-	@media only screen and (max-width: 1440px) and (max-height: 900px) {
-		padding-bottom: 0px;
-	}
-	@media only screen and (max-width: 1500px) {
-		padding-left: 20%;
-	}
+	justify-content: center;
 	@media only screen and (max-width: 1100px) {
 		height: 94%;
-		width: 100%;
-		padding-left: 0px;
 		align-content: center;
-		padding: 0;
-		justify-content: space-around;
 	}
 `;
 
@@ -147,6 +134,8 @@ const ImagemHeader = styled.img`
 `;
 
 const DivInput = styled.div`
+	width: 100%;
+	padding-top: 0.4rem;
 	@media only screen and (max-width: 1100px) {
 		width: 93%;
 		display: flex;
@@ -158,37 +147,10 @@ export function Login() {
 	const navigate = useNavigate();
 	const [invalid, setInvalid] = useState(true);
 
-	// const [name, setName] = useState("")
-	// const [password, setPassword] =useState("")
-
-	// async function onFinish(event: any) {
-	//     event.preventDefault();
-
-	//     const value = {
-	//         email: event.target["0"].value,
-	//         password: event.target["1"].value
-	//     }
-
-	//     const main ={
-	//         email: "brunosjaques@gmail.com",
-	//         password: "123456"
-	//     }
-	//     setName(event.target["0"].value);
-	//     setPassword(event.target["1"].value)
-
-	//     if ((value.email === main.email)&&(value.password === main.password)) {
-	//         navigate("/home");
-	//         setInvalid(true)
-	//     } else {
-	//         setInvalid(false)
-
-	//     }
-	// }
-
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { setName } = useNameContext();
-	
+
 	const firebaseConfig = {
 		apiKey: "AIzaSyDHY8Woz1ti96rIW9a7Tat9a7gOFGDxZ4o",
 		authDomain: "projetofinalcompass-36b71.firebaseapp.com",
@@ -203,10 +165,9 @@ export function Login() {
 	async function onFinish(event: any) {
 		event.preventDefault();
 
-
 		firebase
 			.database()
-			.ref('users')
+			.ref("users")
 			.on("value", function (snapshot) {
 				snapshot.forEach(function (item) {
 					if (item.val().email === email) {
@@ -214,8 +175,6 @@ export function Login() {
 					}
 				});
 			});
-		
-		
 
 		firebase
 			.auth()
@@ -283,7 +242,9 @@ export function Login() {
 						)}
 					</div>
 					<Button>Continuar</Button>
-					<P>Não possui uma conta? <a href="/signup"> Cadastre-se</a></P>
+					<P>
+						Não possui uma conta? <a href="/signup"> Cadastre-se</a>
+					</P>
 				</Infos>
 			</DivForm>
 			<Imagem>

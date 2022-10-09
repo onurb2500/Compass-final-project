@@ -12,7 +12,7 @@ export const Box = styled.div`
 	@media only screen and (max-width: 1100px) {
 		height: 100%;
 		@media only screen and (min-height: 894px) {
-		height: 100vh
+			height: 100vh;
 		}
 		flex-direction: column;
 		justify-content: space-between;
@@ -26,7 +26,7 @@ export const DivForm = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding-top: 1rem; 
+	padding-top: 1rem;
 	@media only screen and (max-width: 1100px) {
 		width: 100%;
 		height: 100%;
@@ -41,17 +41,9 @@ export const Infos = styled.form`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	@media only screen and (max-width: 1440px) and (max-height: 900px) {
-		padding-bottom: 0px;
-	}
-	@media only screen and (max-width: 1500px) {
-		/* padding-left: 20%; */
-	}
 	@media only screen and (max-width: 1100px) {
 		height: 94%;
-		padding-left: 0px;
 		align-content: center;
-		padding: 0;
 	}
 `;
 
@@ -85,6 +77,10 @@ export const Logo = styled.div`
 	background-size: cover;
 	width: 306px;
 	height: 69px;
+`;
+
+export const Title = styled.div`
+	margin-bottom: 2rem;
 `;
 
 export const H1 = styled.p`
@@ -132,6 +128,7 @@ export const ImagemHeader = styled.img`
 `;
 
 export const DivInput = styled.div`
+	width: 100%;
 	padding-top: 0.4rem;
 	@media only screen and (max-width: 1100px) {
 		width: 100%;

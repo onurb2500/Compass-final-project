@@ -24,6 +24,7 @@ import {
 	Imagem,
 	Logo,
 	Label,
+	Title,
 } from "./styles";
 import SignUpInput from "../../components/SingUpInput";
 import Requirement from "../../components/Requirement";
@@ -129,13 +130,13 @@ export function SignUp() {
 			<ImagemHeader src={icon_compass}></ImagemHeader>
 			<DivForm>
 				<Infos onSubmit={(event) => onSignUp(event)}>
-					<div style={{ height: "20%" }}>
+					<Title>
 						<H1>Olá,</H1>
 						<P>
 							Para continuar navegando de forma segura, efetue o cadastro na
 							rede.
 						</P>
-					</div>
+					</Title>
 					<h4
 						style={{ fontSize: "30px", textAlign: "left", paddingTop: "1rem" }}
 					>
