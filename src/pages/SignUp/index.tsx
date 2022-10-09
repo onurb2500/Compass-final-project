@@ -7,14 +7,12 @@ import { useNameContext } from "../../context/Name/NameContext";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/database";
-import { collection, addDoc } from "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
 
 //IMAGES
 import icon_compass from "../../assets/Logo-Compasso-Branco-hor.svg";
 
 //COMPONENTS
-import { Button } from "../../components/Button";
+import { ButtonSignUp } from "../../components/ButtonSignUp";
 import {
 	Box,
 	ImagemHeader,
@@ -29,7 +27,6 @@ import {
 } from "./styles";
 import SignUpInput from "../../components/SingUpInput";
 import Requirement from "../../components/Requirement";
-import { textSpanEnd } from "typescript";
 import RepeatPasswordError from "../../components/RepeatPasswordError/RepeatPasswordError";
 
 export function SignUp() {
@@ -63,7 +60,7 @@ export function SignUp() {
 	};
 
 	function validateSignUp() {
-		if (!repeatedPassword && name && lastName ) {
+		if (!repeatedPassword && name && lastName) {
 			firebase.database().ref().child("users").push(data);
 
 			firebase
@@ -112,8 +109,6 @@ export function SignUp() {
 	}
 
 	useEffect(() => {
-		console.log(repeatedPassword);
-
 		if (
 			password.length > 0 &&
 			password === passwordRepeat &&
@@ -141,9 +136,13 @@ export function SignUp() {
 							rede.
 						</P>
 					</div>
-					<h4 style={{ fontSize: "30px", textAlign: "left" }}>Cadastro</h4>
+					<h4
+						style={{ fontSize: "30px", textAlign: "left", paddingTop: "1rem" }}
+					>
+						Cadastro
+					</h4>
 					<DivInput>
-						<Label>Qual o seu nome?</Label>
+						{/* <Label>Qual o seu nome?</Label> */}
 						<SignUpInput
 							placeholder="Nome"
 							type="name"
@@ -151,7 +150,7 @@ export function SignUp() {
 							value={name}
 							onChange={({ target }) => setName(target.value)}
 						/>
-						<Label>Qual o seu sobrenome?</Label>
+						{/* <Label>Qual o seu sobrenome?</Label> */}
 						<SignUpInput
 							placeholder="Sobrenome"
 							type="name"
@@ -159,7 +158,7 @@ export function SignUp() {
 							value={lastName}
 							onChange={({ target }) => setLastName(target.value)}
 						/>
-						<Label>Qual o seu email?</Label>
+						{/* <Label>Qual o seu email?</Label> */}
 						<SignUpInput
 							placeholder="Email"
 							type="text"
@@ -167,7 +166,7 @@ export function SignUp() {
 							value={email}
 							onChange={({ target }) => setEmail(target.value)}
 						/>
-						<Label>Crie uma senha</Label>
+						{/* <Label>Crie uma senha</Label> */}
 						<SignUpInput
 							placeholder="Senha"
 							type="password"
@@ -178,7 +177,7 @@ export function SignUp() {
 							)}
 						/>
 						<Requirement validatePassword={validatePassword} />
-						<Label>Repita sua senha</Label>
+						{/* <Label>Repita sua senha</Label> */}
 						<SignUpInput
 							placeholder="Repetir senha"
 							type="password"
@@ -187,8 +186,8 @@ export function SignUp() {
 							onChange={(event) => setPasswordRepeat(event.target.value)}
 						/>
 						<RepeatPasswordError repeatedPassword={repeatedPassword} />
+						<ButtonSignUp>Continuar</ButtonSignUp>
 					</DivInput>
-					<Button>Continuar</Button>
 				</Infos>
 			</DivForm>
 			<Imagem>

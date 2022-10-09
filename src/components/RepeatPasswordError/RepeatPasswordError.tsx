@@ -2,7 +2,9 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const DivMessageError = styled.div`
-    color: yellow;
+    color: white;
+    margin-top: -0.5rem;
+    margin-left: .4rem;
 `
 interface ITest {
     repeatedPassword: boolean

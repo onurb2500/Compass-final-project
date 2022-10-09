@@ -3,17 +3,17 @@ import styled from "styled-components";
 import img_pc from "../../assets/image_pc.png";
 import icon_compass from "../../assets/Logo-Compasso-Branco-hor.svg";
 
-
 export const Box = styled.div`
 	width: 100vw;
-	height: 100vh;
+	height: 1080px;
 	background: linear-gradient(180deg, #33383d 0%, #1c1d20 100%);
 	box-shadow: 4px 4px 70px rgba(0, 0, 0, 0.25);
 	display: flex;
-	@media only screen and (max-width: 1440px) and (max-height: 900px) {
-		height: 900px;
-	}
 	@media only screen and (max-width: 1100px) {
+		height: 100%;
+		@media only screen and (min-height: 894px) {
+		height: 100vh
+		}
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
@@ -25,24 +25,22 @@ export const DivForm = styled.div`
 	height: 100%;
 	display: flex;
 	align-items: center;
-	@media only screen and (max-width: 1440px) and (max-height: 900px) {
-
-	}
+	justify-content: center;
+	padding-top: 1rem; 
 	@media only screen and (max-width: 1100px) {
 		width: 100%;
+		height: 100%;
 		display: flex;
 		align-items: center;
 		flex-direction: column;
-		padding: 5%;
 	}
 `;
 
 export const Infos = styled.form`
-
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
 	@media only screen and (max-width: 1440px) and (max-height: 900px) {
 		padding-bottom: 0px;
 	}
@@ -54,7 +52,6 @@ export const Infos = styled.form`
 		padding-left: 0px;
 		align-content: center;
 		padding: 0;
-
 	}
 `;
 
@@ -135,8 +132,9 @@ export const ImagemHeader = styled.img`
 `;
 
 export const DivInput = styled.div`
+	padding-top: 0.4rem;
 	@media only screen and (max-width: 1100px) {
-		width: 93%;
+		width: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: left;

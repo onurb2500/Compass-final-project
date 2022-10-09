@@ -1,7 +1,7 @@
 import React from "react";
 import { FiCheckCircle } from "react-icons/fi";
 import { FiCircle } from "react-icons/fi";
-import { DivReq, ParaRequi } from "./styles";
+import { DivMain, DivRequire, ParaRequi, ParaTitle, Requires } from "./styles";
 
 interface IRequirement {
 	validatePassword: {
@@ -15,31 +15,31 @@ interface IRequirement {
 
 const Requirement = ({ validatePassword }: IRequirement) => {
 	return (
-		<DivReq>
-			<p>Sua senha deve possuir no mínimo:</p>
-			<div>
-				<div style={{ display: "flex" }}>
+		<DivMain>
+			<ParaTitle>Sua senha deve possuir no mínimo:</ParaTitle>
+			<Requires>
+				<DivRequire>
 					{validatePassword.letters ? <FiCheckCircle /> : <FiCircle />}
 					<ParaRequi>6 Caracteres</ParaRequi>
-				</div>
-				<div style={{ display: "flex" }}>
+				</DivRequire>
+				<DivRequire>
 					{validatePassword.upper ? <FiCheckCircle /> : <FiCircle />}
 					<ParaRequi>1 Letra maiúscula</ParaRequi>
-				</div>
-				<div style={{ display: "flex" }}>
+				</DivRequire>
+				<DivRequire>
 					{validatePassword.lower ? <FiCheckCircle /> : <FiCircle />}
 					<ParaRequi>1 Letra minúscula</ParaRequi>
-				</div>
-				<div style={{ display: "flex" }}>
+				</DivRequire>
+				<DivRequire>
 					{validatePassword.special ? <FiCheckCircle /> : <FiCircle />}
 					<ParaRequi>1 Caractere especial: !@#$%^&</ParaRequi>
-				</div>
-				<div style={{ display: "flex" }}>
+				</DivRequire>
+				<DivRequire>
 					{validatePassword.number ? <FiCheckCircle /> : <FiCircle />}
 					<ParaRequi>1 Número</ParaRequi>
-				</div>
-			</div>
-		</DivReq>
+				</DivRequire>
+			</Requires>
+		</DivMain>
 	);
 };
 

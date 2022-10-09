@@ -12,9 +12,6 @@ export const Input = styled.input`
         @media only screen and (max-width: 1100px){
             width: 100%;
         }
-        @media only screen and (max-width: 280px){
-            width: 90%;
-        }
     `;
 
     export const Container = styled.div`
