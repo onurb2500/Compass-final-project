@@ -7,7 +7,7 @@ export const DivReq = styled.div`
 
 export const ParaRequi = styled.p`
     font-size: 15px;
-    color: #d14242;
+    color: #FFFFFF;
 `
 export const Icon = styled.img`
     background-image: url();

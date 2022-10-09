@@ -1,5 +1,5 @@
 //REACT IMPORTS
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useNameContext } from "../../context/Name/NameContext";
 
@@ -30,6 +30,7 @@ import {
 import SignUpInput from "../../components/SingUpInput";
 import Requirement from "../../components/Requirement";
 import { textSpanEnd } from "typescript";
+import RepeatPasswordError from "../../components/RepeatPasswordError/RepeatPasswordError";
 
 export function SignUp() {
 	const { name, setName } = useNameContext();
@@ -37,6 +38,7 @@ export function SignUp() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [passwordRepeat, setPasswordRepeat] = useState("");
+	const [repeatedPassword, setRepeatedPassword] = useState(true);
 
 	const navigate = useNavigate();
 
@@ -52,79 +54,80 @@ export function SignUp() {
 	};
 
 	firebase.initializeApp(firebaseConfig);
-	// const database = getFirestore(app);
-	// const collectionRef = collection(database, 'users')
+
+	const data = {
+		name: name,
+		lastName: lastName,
+		email: email,
+		password: password,
+	};
+
+	function validateSignUp() {
+		if (!repeatedPassword && name && lastName ) {
+			firebase.database().ref().child("users").push(data);
+
+			firebase
+				.auth()
+				.createUserWithEmailAndPassword(email, password)
+				.then(() => {
+					navigate("/login");
+					alert("Usuário cadastrado com sucesso!");
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		} else {
+			alert("existem dados divergentes");
+		}
+	}
 
 	function onSignUp(event: any) {
 		event.preventDefault();
 
-		const data = {
-			name: name,
-			lastName: lastName,
-			email: email,
-			password: password,
-		};
-
-		firebase.database().ref().child("users").push(data);
-
-		firebase.auth().createUserWithEmailAndPassword(email, password)
-			.then(() => {
-				navigate("/login");
-				alert("Usuário cadastrado com sucesso!");
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+		validateSignUp();
 	}
 
-	const [letters, setLetters ] = useState(false)
-	const [upper, setUpper] = useState(false)
-	const [lower, setLower] = useState(false)
-	const [special, setSpecial] = useState(false)
-	const [number, setNumber] = useState(false)
+	const [validatePassword, setValidatePassword] = useState({
+		letters: false,
+		upper: false,
+		lower: false,
+		special: false,
+		number: false,
+	});
 
-	const lettersRegex = new RegExp("^(?=.{6,})")
-	const upperRegex = new RegExp("^(?=.*[A-Z])")
-	const lowerRegex = new RegExp("^(?=.*[a-z])")
-	const specialRegex = new RegExp("^(?=.[!@#$%^&])")
-	const numberRegex = new RegExp("^(?=.*[0-9])")
+	function CheckList(event: any) {
+		const lettersRegex = new RegExp(/^(?=.{6,})/);
+		const upperRegex = new RegExp(/^(?=.*[A-Z]).+$/);
+		const lowerRegex = new RegExp(/^(?=.*[a-z]).+$/);
+		const specialRegex = new RegExp(/^(?=.*[!@#$%^&]).+$/);
+		const numberRegex = new RegExp(/^(?=.*[0-9]).+$/);
 
-	
-
-	function CheckList(event:any) {
-
-		if(lettersRegex.test(event)) {
-			setLetters(true);
-		} else {
-			setLetters(false);
-		}
-
-		if(upperRegex.test(event)) {
-			setUpper(true);
-		} else {
-			setUpper(false);
-		}
-
-		if(lowerRegex.test(event)) {
-			setLower(true);
-		} else {
-			setLower(false);
-		}
-
-		if(specialRegex.test(event)) {
-			setSpecial(true);
-		} else {
-			setSpecial(false);
-		}
-
-		if(numberRegex.test(event)) {
-			setNumber(true);
-		} else {
-			setNumber(false);
-		}
-		console.log(letters, upper, lower, special, number);
-		
+		setValidatePassword({
+			letters: lettersRegex.test(event),
+			upper: upperRegex.test(event),
+			lower: lowerRegex.test(event),
+			special: specialRegex.test(event),
+			number: numberRegex.test(event),
+		});
 	}
+
+	useEffect(() => {
+		console.log(repeatedPassword);
+
+		if (
+			password.length > 0 &&
+			password === passwordRepeat &&
+			validatePassword.letters &&
+			validatePassword.lower &&
+			validatePassword.upper &&
+			validatePassword.special &&
+			validatePassword.number
+		) {
+			setRepeatedPassword(false);
+		} else {
+			setRepeatedPassword(true);
+		}
+	}, [passwordRepeat, password]);
 
 	return (
 		<Box>
@@ -154,14 +157,15 @@ export function SignUp() {
 							type="name"
 							name="lastName"
 							value={lastName}
-							onChange={(({ target }) => setLastName(target.value))}						/>
+							onChange={({ target }) => setLastName(target.value)}
+						/>
 						<Label>Qual o seu email?</Label>
 						<SignUpInput
 							placeholder="Email"
 							type="text"
 							name="email"
 							value={email}
-							onChange={(({ target }) => setEmail(target.value))}
+							onChange={({ target }) => setEmail(target.value)}
 						/>
 						<Label>Crie uma senha</Label>
 						<SignUpInput
@@ -169,17 +173,20 @@ export function SignUp() {
 							type="password"
 							name="password"
 							value={password}
-							onChange={(event) => (CheckList(event.target.value), setPassword(event.target.value))}
+							onChange={(event) => (
+								setPassword(event.target.value), CheckList(event.target.value)
+							)}
 						/>
-						<Requirement/>
+						<Requirement validatePassword={validatePassword} />
 						<Label>Repita sua senha</Label>
 						<SignUpInput
 							placeholder="Repetir senha"
 							type="password"
 							name="passwordRepeat"
 							value={passwordRepeat}
-							onChange={({ target }) => setPasswordRepeat(target.value)}
+							onChange={(event) => setPasswordRepeat(event.target.value)}
 						/>
+						<RepeatPasswordError repeatedPassword={repeatedPassword} />
 					</DivInput>
 					<Button>Continuar</Button>
 				</Infos>
@@ -189,15 +196,4 @@ export function SignUp() {
 			</Imagem>
 		</Box>
 	);
-}
-
-function initializeApp(firebaseConfig: {
-	apiKey: string;
-	authDomain: string;
-	projectId: string;
-	storageBucket: string;
-	messagingSenderId: string;
-	appId: string;
-}) {
-	throw new Error("Function not implemented.");
 }
