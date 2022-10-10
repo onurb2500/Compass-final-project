@@ -18,8 +18,6 @@ const SignUpInput = ({placeholder, type, name, value, onChange}: ISignUpInput) =
 				name={name}
 				defaultValue={value}
 				onChange={onChange}
-				// onFocus={() => setClicked(true)}
-				// onBlur={(event) => event.target.value.length > 0 ? setClicked(true) : setClicked(false)}
 			/>
 		</Container>
     )
