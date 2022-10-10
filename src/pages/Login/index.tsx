@@ -69,6 +69,12 @@ const Infos = styled.form`
 		height: 94%;
 		align-content: center;
 	}
+	@media only screen and (max-width: 375px) {
+		overflow: hidden;
+	}
+	@media only screen and (max-width: 320px) {
+		width: 90%;
+	}
 `;
 
 const Paragraph = styled.p`
@@ -131,14 +137,16 @@ const P = styled.p`
 const PFinal = styled.p`
 	font-size: 16px;
 	width: 301px;
-	margin-left: 0.4rem;
+	/* margin-left: 0.4rem; */
 	// margin-top: 5px;
-	text-align: left;
+	text-align: center;
 	@media only screen and (max-width: 1100px) {
 		// margin-top: 4px;
 	}
 	@media only screen and (max-width: 280px) {
-		width: 100%;
+		text-align: center;
+		margin-left: 0rem;
+		width: 90%;
 	}
 `;
 
@@ -157,6 +165,15 @@ const DivInput = styled.div`
 	padding-top: 0.4rem;
 	@media only screen and (max-width: 1100px) {
 		width: 107%;
+		display: flex;
+		flex-direction: column;
+		align-items: left;
+	}
+	@media only screen and (max-width: 375px) {
+		width: 107%;
+	}
+	@media only screen and (max-width: 320px) {
+		width: 108%;
 		display: flex;
 		flex-direction: column;
 		align-items: left;
@@ -261,13 +278,15 @@ export function Login() {
 						)}
 					</div>
 					<Button>Continuar</Button>
-					<PFinal>
-						Não possui uma conta?{" "}
-						<a style={{ color: "#FF2D04" }} href="/signup">
-							{" "}
-							Cadastre-se
-						</a>
-					</PFinal>
+					<div style={{display:"flex", justifyContent:"space-around"}}>
+						<PFinal>
+							Não possui uma conta?{" "}
+							<a style={{ color: "#FF2D04" }} href="/signup">
+								{" "}
+								Cadastre-se
+							</a>
+						</PFinal>
+					</div>
 				</Infos>
 			</DivForm>
 			<Imagem>

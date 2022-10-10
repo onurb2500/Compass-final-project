@@ -19,7 +19,7 @@ export const Input = styled.input<BorderInvalid>`
             margin: 20px 0;
         }
         @media only screen and (max-width: 280px){
-            width: 90%;
+            width: 100%;
         }
     `;
 
@@ -40,5 +40,9 @@ export const Input = styled.input<BorderInvalid>`
         display: flex;
         align-items: center;
         width: 100%;
-        max-width: 418px;  
+        max-width: 418px;
+        @media only screen and (max-width: 375px){
+            width: 100%;
+        }
+
     `

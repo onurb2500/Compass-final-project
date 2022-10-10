@@ -17,7 +17,7 @@ export function Button ({children}:{children:string}) {
         @media only screen and (max-width: 1024px){
             width:327px;
         }
-        @media only screen and (max-width: 280px){
+        @media only screen and (max-width: 320px){
             width: 100%;
         }
     `

@@ -8,7 +8,6 @@ export const Box = styled.div`
 	height: 1080px;
 	background: linear-gradient(180deg, #33383d 0%, #1c1d20 100%);
 	box-shadow: 4px 4px 70px rgba(0, 0, 0, 0.25);
-	padding-bottom: 2rem;
 	display: flex;
 	@media only screen and (max-width: 1100px) {
 		height: 100%;
@@ -19,7 +18,7 @@ export const Box = styled.div`
 		justify-content: space-between;
 		align-items: center;
 	}
-	@media only screen and (max-width: 1100px) {
+	@media only screen and (max-width: 280px) {
 		padding-left: 0.7rem;
 		padding-right: 0.7rem;
 	}
