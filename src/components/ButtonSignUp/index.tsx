@@ -5,7 +5,7 @@ import styled from "styled-components";
 export function ButtonSignUp ({children}:{children:string}) {
     
     const ButtonSubmit = styled.button`
-        width:301px;
+        width:327px;
         height: 64px;
         margin: 3rem 0;
         border: none;

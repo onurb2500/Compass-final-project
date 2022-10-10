@@ -104,6 +104,20 @@ export const P = styled.p`
 	}
 `;
 
+export const PFinal = styled.p`
+	font-size: 16px;
+	width: 301px;
+	margin-left: 0.4rem;
+	// margin-top: 5px;
+	text-align: left;
+	@media only screen and (max-width: 1100px) {
+		// margin-top: 4px;
+	}
+	@media only screen and (max-width: 280px) {
+		width: 100%;
+	}
+`;
+
 export const Label = styled.p`
 	width: 100%;
 	// margin-top: 5px;

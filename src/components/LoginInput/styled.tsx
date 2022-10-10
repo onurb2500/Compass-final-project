@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
-export const Input = styled.input`
+interface BorderInvalid {
+    invalid: boolean
+}
+
+export const Input = styled.input<BorderInvalid>`
         background: #26292C;
-        border: "1px solid #FFFFFF";
+        ${(props) => props.invalid ? "border: 1px solid #FFFFFF" : "border: 1px solid #E9B425"};
         border-radius: 50px;
         width: 100%;
         height: 67px;
@@ -24,9 +28,12 @@ export const Input = styled.input`
     }
 
     export const Icon = styled.div<IconClicked>`
-        transition: 10s;
+        transition: 0.5s;
         ${(props) => props.clicked ? "transform: translate(-40px, 0)" : "transform: translate(10px)"};
-        background: #26292C;
+        @media only screen and (max-width: 1024px) {
+            transform: translate(-40px, 0);
+            background: #26292C;
+        }
     `
 
     export const Container = styled.div`

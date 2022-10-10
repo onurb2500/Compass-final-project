@@ -32,7 +32,7 @@ const Box = styled.div`
 	}
 	@media only screen and (max-width: 1100px) {
 		flex-direction: column;
-		justify-content: space-between;
+		justify-content: center;
 		align-items: center;
 	}
 `;
@@ -53,18 +53,19 @@ const DivForm = styled.div`
 		width: 100%;
 		height: 90%;
 		display: flex;
+		justify-content: flex-start;
 		align-items: center;
 		flex-direction: column;
-		padding: 5%;
 	}
 `;
 
 const Infos = styled.form`
+	width: 327px;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	@media only screen and (max-width: 1100px) {
+	@media only screen and (max-width: 1024px) {
 		height: 94%;
 		align-content: center;
 	}
@@ -77,6 +78,10 @@ const Paragraph = styled.p`
 	font-size: 16px;
 	color: #e9b425;
 	justify-content: space-around;
+	margin-left: 1.5rem;
+	@media only screen and (max-width: 1024px) {
+		margin-left: 0rem;
+	}
 `;
 const Imagem = styled.div`
 	display: flex;
@@ -103,6 +108,7 @@ const Logo = styled.div`
 `;
 
 const H1 = styled.p`
+	max-width: 327px;
 	font-size: 60px;
 	text-align: left;
 	@media only screen and (max-width: 1100px) {
@@ -113,6 +119,19 @@ const H1 = styled.p`
 const P = styled.p`
 	font-size: 16px;
 	width: 301px;
+	// margin-top: 5px;
+	text-align: left;
+	@media only screen and (max-width: 1100px) {
+		// margin-top: 4px;
+	}
+	@media only screen and (max-width: 280px) {
+		width: 100%;
+	}
+`;
+const PFinal = styled.p`
+	font-size: 16px;
+	width: 301px;
+	margin-left: 0.4rem;
 	// margin-top: 5px;
 	text-align: left;
 	@media only screen and (max-width: 1100px) {
@@ -134,10 +153,10 @@ const ImagemHeader = styled.img`
 `;
 
 const DivInput = styled.div`
-	width: 100%;
+	width: 115%;
 	padding-top: 0.4rem;
 	@media only screen and (max-width: 1100px) {
-		width: 93%;
+		width: 107%;
 		display: flex;
 		flex-direction: column;
 		align-items: left;
@@ -184,18 +203,15 @@ export function Login() {
 				console.log(email, password);
 			})
 			.catch((error) => {
+				setInvalid(false);
 				if (
 					error.code == "auth/wrong-password" ||
 					error.code == "auth/user-not-found"
 				) {
-					alert("E-mail ou senha inválidos");
 					return;
 				}
-				alert("Não foi possível efetuar o login");
 			});
 	}
-
-	const [isClicked, setIsClicked] = useState(true);
 
 	return (
 		<Box>
@@ -209,7 +225,11 @@ export function Login() {
 						</P>
 					</div>
 					<DivInput>
-						<h4 style={{ fontSize: "30px", textAlign: "left" }}>Login</h4>
+						<h4
+							style={{ fontSize: "30px", textAlign: "left", maxWidth: "327px" }}
+						>
+							Login
+						</h4>
 						<LoginInput
 							placeholder="Email"
 							type="name"
@@ -232,19 +252,22 @@ export function Login() {
 						style={{
 							display: "flex",
 							justifyContent: "space-around",
-							width: "379px",
 						}}
 					>
 						{!invalid && (
 							<Paragraph style={{ textAlign: "center" }}>
-								Ops, um usuário ou senha inválidos. Tente novamente!
+								Ops, usuário ou senha inválidos. Tente novamente!
 							</Paragraph>
 						)}
 					</div>
 					<Button>Continuar</Button>
-					<P>
-						Não possui uma conta? <a href="/signup"> Cadastre-se</a>
-					</P>
+					<PFinal>
+						Não possui uma conta?{" "}
+						<a style={{ color: "#FF2D04" }} href="/signup">
+							{" "}
+							Cadastre-se
+						</a>
+					</PFinal>
 				</Infos>
 			</DivForm>
 			<Imagem>

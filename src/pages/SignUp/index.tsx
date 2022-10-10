@@ -20,6 +20,7 @@ import {
 	Infos,
 	H1,
 	P,
+	PFinal,
 	DivInput,
 	Imagem,
 	Logo,
@@ -188,6 +189,13 @@ export function SignUp() {
 						/>
 						<RepeatPasswordError repeatedPassword={repeatedPassword} />
 						<ButtonSignUp>Continuar</ButtonSignUp>
+						<PFinal>
+							Já possui uma conta?{" "}
+							<a style={{ color: "#FF2D04" }} href="/login">
+								{" "}
+								Faça login
+							</a>
+						</PFinal>
 					</DivInput>
 				</Infos>
 			</DivForm>

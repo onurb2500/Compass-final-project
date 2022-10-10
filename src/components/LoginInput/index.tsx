@@ -6,7 +6,7 @@ import { Container, Icon, Input } from "./styled";
 interface IInput extends InputHTMLAttributes<HTMLInputElement> {
 	placeholder: string;
 	type?: string;
-	invalid?: boolean;
+	invalid: boolean;
 	name: string;
 	value: string;
 	onChange: (value: any) => void;
@@ -22,6 +22,7 @@ const LoginInput = ({
 }: IInput) => {
 	
 	const [clicked, setClicked] = useState(false);
+	const [invalidBorder, setInvalidBorder] = useState(false);
 
 	return (
 		<Container>
@@ -29,10 +30,11 @@ const LoginInput = ({
 				placeholder={placeholder}
 				type={type}
 				name={name}
+				invalid={invalid}
 				defaultValue={value}
 				onChange={onChange}
-				// onFocus={() => setClicked(true)}
-				// onBlur={(event) => event.target.value.length > 0 ? setClicked(true) : setClicked(false)}
+				onFocus={() => setClicked(true)}
+				onBlur={(event) => event.target.value.length > 0 ? setClicked(true) : setClicked(false)}
 			/>
 			<Icon clicked={clicked}>
 				{type === "name" ? (
