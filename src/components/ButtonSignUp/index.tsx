@@ -15,7 +15,7 @@ export function ButtonSignUp ({children}:{children:string}) {
         filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
         font-size: 18px; 
 
-        @media only screen and (max-width: 280px){
+        @media only screen and (max-width: 320px){
             width: 100%;
         }
     `
