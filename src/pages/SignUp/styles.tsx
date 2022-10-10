@@ -8,15 +8,20 @@ export const Box = styled.div`
 	height: 1080px;
 	background: linear-gradient(180deg, #33383d 0%, #1c1d20 100%);
 	box-shadow: 4px 4px 70px rgba(0, 0, 0, 0.25);
+	padding-bottom: 2rem;
 	display: flex;
 	@media only screen and (max-width: 1100px) {
 		height: 100%;
-		@media only screen and (min-height: 894px) {
+		@media only screen and (min-height: 1024px) {
 			height: 100vh;
 		}
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
+	}
+	@media only screen and (max-width: 1100px) {
+		padding-left: 0.7rem;
+		padding-right: 0.7rem;
 	}
 `;
 
@@ -26,7 +31,7 @@ export const DivForm = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding-top: 1rem;
+	padding-top: 1.7rem;
 	@media only screen and (max-width: 1100px) {
 		width: 100%;
 		height: 100%;
@@ -110,10 +115,8 @@ export const PFinal = styled.p`
 	margin-left: 0.4rem;
 	// margin-top: 5px;
 	text-align: left;
-	@media only screen and (max-width: 1100px) {
-		// margin-top: 4px;
-	}
 	@media only screen and (max-width: 280px) {
+		margin-left: 0rem;
 		width: 100%;
 	}
 `;

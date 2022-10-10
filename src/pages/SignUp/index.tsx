@@ -179,7 +179,6 @@ export function SignUp() {
 							)}
 						/>
 						<Requirement validatePassword={validatePassword} />
-						{/* <Label>Repita sua senha</Label> */}
 						<SignUpInput
 							placeholder="Repetir senha"
 							type="password"
