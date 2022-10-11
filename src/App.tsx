@@ -10,17 +10,20 @@ import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
 
 function App() {
 	const [name, setName] = useState<string>("");
+	const [boolean, setBoolean] = useState<boolean>(false);
 	const [isAuth, setIsAuth] = useState(false);
 
 	return (
-		<NameContext.Provider value={{ name, setName }}>
+		<NameContext.Provider value={{ name, setName, boolean, setBoolean }}>
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Login />} />
 					<Route path="/login" element={<Login />} />
-					{/* <Route element={<ProtectedRoutes />}> */}
-					<Route path="/home" element={<Home />} />
-					{/* </Rout;e> */}
+					<Route path="/home" element={
+						<ProtectedRoutes>
+							<Home/>
+						</ProtectedRoutes>
+					} />
 					<Route path="/signup" element={<SignUp />} />
 				</Routes>
 			</BrowserRouter>

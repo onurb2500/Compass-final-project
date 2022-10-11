@@ -7,7 +7,8 @@ import { Time } from "../../components/Time";
 import Geoloc from "../../components/Weather";
 
 import { useNameContext } from "../../context/Name/NameContext";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Box = styled.div`
 	display: flex;
@@ -254,12 +255,14 @@ const A = styled.a`
 
 export function Home() {
 	const { name } = useNameContext();
-	console.log(name)
+	// const navigate = useNavigate();
+	// useEffect(() => {
+	// 	!name && navigate("/login");
+	// }, [])
+	// console.log(name)
 
 	return (
 		<Box>
-			{/*((name.split(" ").slice(0, 1).length) > 0) ? <></> : <Navigate to={"/login"}/>*/}
-			<>{console.log(name)}</>
 			<Header>
 				<Image />
 				<Date>

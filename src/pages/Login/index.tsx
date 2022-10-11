@@ -185,7 +185,7 @@ export function Login() {
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const { name, setName } = useNameContext();
+	const { name, setName, boolean, setBoolean } = useNameContext();
 
 	const firebaseConfig = {
 		apiKey: "AIzaSyDHY8Woz1ti96rIW9a7Tat9a7gOFGDxZ4o",
@@ -208,6 +208,7 @@ export function Login() {
 				snapshot.forEach(function (item) {
 					if (item.val().email === email) {
 						setName(item.val().name);
+						console.log(item.val().name);
 					}
 				});
 			});
@@ -216,9 +217,9 @@ export function Login() {
 			.auth()
 			.signInWithEmailAndPassword(email, password)
 			.then(() => {
+				setBoolean(true);
 				navigate("/home");
-				console.log(email, password);
-				
+				console.log(email, password, name);
 			})
 			.catch((error) => {
 				setInvalid(false);
@@ -279,7 +280,7 @@ export function Login() {
 						)}
 					</div>
 					<Button>Continuar</Button>
-					<div style={{display:"flex", justifyContent:"space-around"}}>
+					<div style={{ display: "flex", justifyContent: "space-around" }}>
 						<PFinal>
 							Não possui uma conta?{" "}
 							<a style={{ color: "#FF2D04" }} href="/signup">

@@ -75,6 +75,7 @@ export function SignUp() {
 				})
 				.catch((error) => {
 					console.log(error);
+					setInvalidData(true);
 				});
 		} else {
 			setInvalidData(true);
