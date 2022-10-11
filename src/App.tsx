@@ -6,19 +6,21 @@ import { AuthProvider } from "./context/AuthProvider/index";
 import { ProtectedLayout } from "./components/ProtectedLayout";
 import { SignUp } from "./pages/SignUp";
 import { NameContext } from "./context/Name/NameContext";
-
+import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
 
 function App() {
-
-    const [name, setName] = useState<string>("")
+	const [name, setName] = useState<string>("");
+	const [isAuth, setIsAuth] = useState(false);
 
 	return (
-		<NameContext.Provider value={{name, setName}}>
+		<NameContext.Provider value={{ name, setName }}>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/home" element={<Home />} />
 					<Route path="/" element={<Login />} />
 					<Route path="/login" element={<Login />} />
+					{/* <Route element={<ProtectedRoutes />}> */}
+					<Route path="/home" element={<Home />} />
+					{/* </Rout;e> */}
 					<Route path="/signup" element={<SignUp />} />
 				</Routes>
 			</BrowserRouter>

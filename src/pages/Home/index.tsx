@@ -7,6 +7,7 @@ import { Time } from "../../components/Time";
 import Geoloc from "../../components/Weather";
 
 import { useNameContext } from "../../context/Name/NameContext";
+import { Navigate } from "react-router-dom";
 
 const Box = styled.div`
 	display: flex;
@@ -253,9 +254,12 @@ const A = styled.a`
 
 export function Home() {
 	const { name } = useNameContext();
+	console.log(name)
 
 	return (
 		<Box>
+			{/*((name.split(" ").slice(0, 1).length) > 0) ? <></> : <Navigate to={"/login"}/>*/}
+			<>{console.log(name)}</>
 			<Header>
 				<Image />
 				<Date>
@@ -282,7 +286,9 @@ export function Home() {
 			</Content>
 			<Footer>
 				<DivSpanFooter>
-					<DivWelcome>Seja Bem-vindo(a), {name.split(' ').slice(0,1)}</DivWelcome>
+					<DivWelcome>
+						Seja Bem-vindo(a), {name.split(" ").slice(0, 1)}
+					</DivWelcome>
 					<SpanFooter>
 						Essa janela do navegador é usada para manter sua sessão de
 						autenticação ativa. Deixe-a aberta em segundo plano e abra uma nova

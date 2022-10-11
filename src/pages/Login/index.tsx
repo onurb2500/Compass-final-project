@@ -208,7 +208,6 @@ export function Login() {
 				snapshot.forEach(function (item) {
 					if (item.val().email === email) {
 						setName(item.val().name);
-						console.log(name.split(' ').slice(0,1));
 					}
 				});
 			});
