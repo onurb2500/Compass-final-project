@@ -26,6 +26,7 @@ import {
 	Logo,
 	Label,
 	Title,
+	Error,
 } from "./styles";
 import SignUpInput from "../../components/SingUpInput";
 import Requirement from "../../components/Requirement";
@@ -38,6 +39,7 @@ export function SignUp() {
 	const [password, setPassword] = useState("");
 	const [passwordRepeat, setPasswordRepeat] = useState("");
 	const [repeatedPassword, setRepeatedPassword] = useState(true);
+	const [invalidData, setInvalidData] = useState(false);
 
 	const navigate = useNavigate();
 
@@ -62,7 +64,7 @@ export function SignUp() {
 	};
 
 	function validateSignUp() {
-		if (!repeatedPassword && name && lastName) {
+		if (!repeatedPassword && name) {
 			firebase.database().ref().child("users").push(data);
 
 			firebase
@@ -70,13 +72,12 @@ export function SignUp() {
 				.createUserWithEmailAndPassword(email, password)
 				.then(() => {
 					navigate("/login");
-					alert("Usuário cadastrado com sucesso!");
 				})
 				.catch((error) => {
 					console.log(error);
 				});
 		} else {
-			alert("existem dados divergentes");
+			setInvalidData(true);
 		}
 	}
 
@@ -153,13 +154,13 @@ export function SignUp() {
 							onChange={({ target }) => setName(target.value)}
 						/>
 						{/* <Label>Qual o seu sobrenome?</Label> */}
-						<SignUpInput
+						{/* <SignUpInput
 							placeholder="Sobrenome"
 							type="name"
 							name="lastName"
 							value={lastName}
 							onChange={({ target }) => setLastName(target.value)}
-						/>
+						/> */}
 						{/* <Label>Qual o seu email?</Label> */}
 						<SignUpInput
 							placeholder="Email"
@@ -188,13 +189,20 @@ export function SignUp() {
 						/>
 						<RepeatPasswordError repeatedPassword={repeatedPassword} />
 						<ButtonSignUp>Continuar</ButtonSignUp>
-						<PFinal>
-							Já possui uma conta?{" "}
-							<a style={{ color: "#FF2D04" }} href="/login">
-								{" "}
-								Faça login
-							</a>
-						</PFinal>
+						{invalidData ? (
+							<Error>Preencha todos os campos corretamente</Error>
+						) : (
+							<></>
+						)}
+						<div style={{ display: "flex", justifyContent: "space-around" }}>
+							<PFinal>
+								Já possui uma conta?{" "}
+								<a style={{ color: "#FF2D04" }} href="/login">
+									{" "}
+									Faça login
+								</a>
+							</PFinal>
+						</div>
 					</DivInput>
 				</Infos>
 			</DivForm>

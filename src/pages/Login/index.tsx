@@ -185,7 +185,7 @@ export function Login() {
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const { setName } = useNameContext();
+	const { name, setName } = useNameContext();
 
 	const firebaseConfig = {
 		apiKey: "AIzaSyDHY8Woz1ti96rIW9a7Tat9a7gOFGDxZ4o",
@@ -208,6 +208,7 @@ export function Login() {
 				snapshot.forEach(function (item) {
 					if (item.val().email === email) {
 						setName(item.val().name);
+						console.log(name.split(' ').slice(0,1));
 					}
 				});
 			});
@@ -218,6 +219,7 @@ export function Login() {
 			.then(() => {
 				navigate("/home");
 				console.log(email, password);
+				
 			})
 			.catch((error) => {
 				setInvalid(false);

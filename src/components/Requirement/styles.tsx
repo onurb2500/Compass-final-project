@@ -22,6 +22,7 @@ export const ParaTitle = styled.p``;
 
 export const DivRequire = styled.p`
 	display: flex;
+	margin: .3rem 0;
 `;
 
 export const Requires = styled.p`

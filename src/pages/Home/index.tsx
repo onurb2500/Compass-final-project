@@ -168,7 +168,7 @@ const Footer = styled.div`
 	@media only screen and (max-width: 654px) and (max-height: 281px) {
 		position: relative;
 	}
-	@media only screen and (max-height: 900px) {
+	@media only screen and (max-height: 899px) {
 		position: relative;
 	}
 `;
@@ -178,9 +178,9 @@ const DivSpanFooter = styled.div`
 	width: 50%;
 	height: 60px;
 	border-right: 1px solid white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	@media only screen and (max-width: 1100px) {
 		padding: 20px 0px 20px 0px;
 		text-align: center;
@@ -189,11 +189,25 @@ const DivSpanFooter = styled.div`
 		height: auto;
 		border-right: none;
 		border-bottom: 1px solid white;
+		flex-direction: column;
+	}
+`;
+
+const DivWelcome = styled.div`
+	margin-left: 3rem;
+	font-size: 24px;
+	font-weight: 700;
+	text-align: left;
+	width: 50%;
+	@media only screen and (max-width: 1024px) {
+		width: auto;
+		margin: 0px;
+		text-align: center;
 	}
 `;
 
 const SpanFooter = styled.span`
-	width: 541px;
+	width: 100%;
 	font-weight: 400;
 	font-size: 12px;
 	margin-top: 15px;
@@ -268,7 +282,7 @@ export function Home() {
 			</Content>
 			<Footer>
 				<DivSpanFooter>
-                <div style={{marginLeft:"3rem", fontSize:"30px", fontWeight:"700", textAlign:"left"}}>Olá, {name}</div>
+					<DivWelcome>Seja Bem-vindo(a), {name.split(' ').slice(0,1)}</DivWelcome>
 					<SpanFooter>
 						Essa janela do navegador é usada para manter sua sessão de
 						autenticação ativa. Deixe-a aberta em segundo plano e abra uma nova

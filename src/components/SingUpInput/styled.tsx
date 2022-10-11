@@ -19,5 +19,6 @@ export const Input = styled.input`
         display: flex;
         align-items: center;
         width: 100%;
-        max-width: 418px;  
+        max-width: 418px;
+        padding-top:0.3rem;
     `

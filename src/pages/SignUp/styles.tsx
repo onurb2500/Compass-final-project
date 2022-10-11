@@ -110,14 +110,9 @@ export const P = styled.p`
 
 export const PFinal = styled.p`
 	font-size: 16px;
-	width: 301px;
-	margin-left: 0.4rem;
-	// margin-top: 5px;
-	text-align: left;
-	@media only screen and (max-width: 280px) {
-		margin-left: 0rem;
-		width: 100%;
-	}
+	width: 100%;
+	margin-bottom: 2.2rem;
+	text-align: center;
 `;
 
 export const Label = styled.p`
@@ -153,3 +148,12 @@ export const DivInput = styled.div`
 		align-items: left;
 	}
 `;
+
+export const Error = styled.div`
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+	margin-bottom: 2rem;
+	color: #E9B425;
+	text-align: center;
+`
